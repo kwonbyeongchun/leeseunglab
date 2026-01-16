@@ -12,7 +12,7 @@ export interface HeroSectionProps {
   description: string;
   scrollTarget?: string;
   overlayOpacity?: number;
-  minHeight?: 'screen' | 'half' | 'auto';
+  minHeight?: 'screen' | 'three-quarter' | 'half' | 'auto';
   children?: ReactNode;
   className?: string;
 }
@@ -30,6 +30,7 @@ export function HeroSection({
 }: HeroSectionProps) {
   const minHeightClasses = {
     screen: 'min-h-screen',
+    'three-quarter': 'min-h-[75vh]',
     half: 'min-h-[50vh]',
     auto: 'min-h-0',
   };

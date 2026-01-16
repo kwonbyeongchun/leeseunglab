@@ -3,7 +3,7 @@ import { ContentSection } from '@/components/templates/ContentSection';
 import { GridSection } from '@/components/templates/GridSection';
 import { LandingHero } from '@/components/organisms/LandingHero';
 import { AboutContent } from '@/components/organisms/AboutContent';
-import { ResearchAccordion } from '@/components/organisms/ResearchAccordion';
+import { ResearchCard } from '@/components/organisms/ResearchCard';
 import { BigQuestionCard } from '@/components/organisms/BigQuestionCard';
 import { TeamMemberCard } from '@/components/organisms/TeamMemberCard';
 import { AffiliationLogo } from '@/components/organisms/AffiliationLogo';
@@ -17,12 +17,15 @@ import { affiliations } from '@/data/affiliations';
 export function HomePage() {
   // Get first team member (César Terrer) as featured
   const featuredMember = teamMembers[0];
-  const displayedQuestions = bigQuestions.slice(0, 6);
+  // Show all 8 questions in a 4-column grid (like original site)
+  const displayedQuestions = bigQuestions;
 
   return (
     <PageLayout>
       {/* Hero Section */}
       <LandingHero />
+
+      <Spacer size="4xl" />
 
       {/* About Section - Lab Introduction */}
       <ContentSection
@@ -31,31 +34,35 @@ export function HomePage() {
         padding="xl"
       >
         <AboutContent
-          image={featuredMember.image}
-          imageAlt={featuredMember.name}
+          image="/images/terrerlab/test-homepage.jpg"
+          imageAlt="Terrer Lab"
           title="Terrer Lab"
           description="The focus of the Terrer Lab is terrestrial ecosystem ecology. We study how climate change and anthropogenic activities affect ecosystems, and, conversely, how ecosystem dynamics modulate climate change. We synthesize large datasets of field observations and remote sensing data using meta-analysis, machine learning, and other statistical methods to better understand the global functioning of terrestrial ecosystems."
         />
       </ContentSection>
 
+      <Spacer size="4xl" />
+
       {/* Research Themes Section */}
       <ContentSection
         id="research"
-        background="light"
+        background="white"
         padding="xl"
       >
-        <div className="mx-auto max-w-4xl">
-          <h2 className="mb-4 text-center font-lato text-3xl font-bold text-[#1a1a1a] md:text-4xl">
+        <div className="max-w-5xl" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+          <h2 className="mb-2 text-center font-lato text-3xl font-bold text-[#00380A] md:text-4xl">
             Research Themes
           </h2>
-          <p className="mb-8 text-center font-open-sans text-lg text-gray-600">
-            Our core research areas focus on understanding and predicting the terrestrial carbon cycle
-          </p>
-          <div className="divide-y divide-gray-200 border-t border-gray-200">
+          <div className="mx-auto mb-8 h-1 w-12 bg-[#00380A]" />
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {researchThemes.map((theme, index) => (
-              <ResearchAccordion
+              <ResearchCard
                 key={theme.id}
-                {...theme}
+                id={theme.id}
+                title={theme.title}
+                description={theme.description}
+                backgroundImage={theme.backgroundImage || '/images/terrerlab/hero-background.jpg'}
+                href={theme.href}
                 index={index}
               />
             ))}
@@ -63,12 +70,15 @@ export function HomePage() {
         </div>
       </ContentSection>
 
+
+      <Spacer size="4xl" />
+
       {/* Big Questions Section */}
       <GridSection
         id="big-questions"
-        title="Big Questions"
-        subtitle="The fundamental questions driving our research"
-        columns={3}
+        title="Our Big Questions"
+        subtitle="RESEARCH INTERESTS"
+        columns={4}
         gap="md"
         background="white"
         padding="xl"
@@ -82,19 +92,6 @@ export function HomePage() {
         ))}
       </GridSection>
 
-      {/* View All Questions Link */}
-      <ContentSection background="white" padding="sm">
-        <div className="text-center">
-          <Link
-            href="/big-questions"
-            variant="primary"
-            className="inline-flex items-center gap-2 text-lg font-medium"
-          >
-            View all big questions
-            <span>→</span>
-          </Link>
-        </div>
-      </ContentSection>
 
       {/* Team Preview Section */}
       <GridSection

@@ -39,10 +39,10 @@ export function NavigationBar({ className }: NavigationBarProps) {
       <div
         className="flex items-center justify-between"
         style={{
-          maxWidth: '940px',
+          maxWidth: '1040px',
           width: '100%',
           margin: '10px auto',
-          padding: '0 100px'
+          padding: '0 50px'
         }}
       >
         {/* Logo */}

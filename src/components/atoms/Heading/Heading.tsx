@@ -7,6 +7,7 @@ export interface HeadingProps {
   level?: HeadingLevel;
   color?: ColorVariant;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 const levelClasses: Record<HeadingLevel, string> = {
@@ -43,11 +44,12 @@ export function Heading({
   level = 1,
   color = 'text',
   className,
+  style,
 }: HeadingProps) {
   const Tag = tagMap[level];
 
   return (
-    <Tag className={cn(levelClasses[level], colorClasses[color], className)}>
+    <Tag className={cn(levelClasses[level], colorClasses[color], className)} style={style}>
       {children}
     </Tag>
   );

@@ -1,10 +1,18 @@
 import { motion } from 'framer-motion';
 import { Heading } from '@/components/atoms/Heading';
 import { Span } from '@/components/atoms/Span';
-import { Icon } from '@/components/atoms/Icon';
 import { cn } from '@/utils/cn';
 import { fadeInUp, rotateIn } from '@/utils/animations';
 import type { HeadingLevel, ColorVariant } from '@/types';
+
+// public 폴더 이미지에 base URL 자동 추가
+const getImageSrc = (src: string): string => {
+  const baseUrl = import.meta.env.BASE_URL || '/';
+  if (src.startsWith('/') && !src.startsWith(baseUrl)) {
+    return `${baseUrl.replace(/\/$/, '')}${src}`;
+  }
+  return src;
+};
 
 export interface SectionTitleProps {
   title: string;
@@ -31,7 +39,7 @@ const containerVariants = {
 export function SectionTitle({
   title,
   subtitle,
-  level = 1,
+  level = 3,
   color = 'text',
   showDecorations = true,
   align = 'center',
@@ -49,20 +57,24 @@ export function SectionTitle({
       {showDecorations && (
         <motion.div
           variants={animate ? rotateIn : undefined}
-          className="flex items-center gap-4"
+          className="flex items-center justify-center"
         >
-          <Icon name="Leaf" size="lg" color="secondary" className="rotate-45" />
+          <img
+            src={getImageSrc('/images/terrerlab/up_green.png')}
+            alt=""
+            className="w-5 h-5"
+          />
         </motion.div>
       )}
 
       {subtitle && (
         <motion.div variants={animate ? fadeInUp : undefined}>
           <Span
-            size="sm"
-            color="secondary"
+            size="xs"
+            color="muted"
             uppercase
-            letterSpacing="wider"
-            className="font-medium"
+            letterSpacing="widest"
+            className="font-medium tracking-[0.2em]"
           >
             {subtitle}
           </Span>
@@ -70,7 +82,7 @@ export function SectionTitle({
       )}
 
       <motion.div variants={animate ? fadeInUp : undefined}>
-        <Heading level={level} color={color}>
+        <Heading level={level} style={{ fontWeight: 700, color: '#00380A' }}>
           {title}
         </Heading>
       </motion.div>
@@ -78,9 +90,13 @@ export function SectionTitle({
       {showDecorations && (
         <motion.div
           variants={animate ? rotateIn : undefined}
-          className="flex items-center gap-4"
+          className="flex items-center justify-center"
         >
-          <Icon name="Leaf" size="lg" color="secondary" className="-rotate-45" />
+          <img
+            src={getImageSrc('/images/terrerlab/down_green.png')}
+            alt=""
+            className="w-5 h-5"
+          />
         </motion.div>
       )}
     </>

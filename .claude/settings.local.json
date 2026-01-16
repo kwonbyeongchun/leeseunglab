@@ -48,7 +48,11 @@
       "Bash(git -C \"X:\\\\project_files_git\\\\leeseunglab\" status --short)",
       "WebFetch(domain:www.terrerlab.com)",
       "Bash(git -C \"X:\\\\project_files_git\\\\leeseunglab\" add \"src/\" \"public/images/\")",
-      "Bash(git -C \"X:\\\\project_files_git\\\\leeseunglab\" commit -m \"$\\(cat <<''EOF''\nAdd base URL handling for GitHub Pages images\n\n- Update Image and BackgroundImage components to resolve paths with BASE_URL\n- Include all source code and image updates\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+      "Bash(git -C \"X:\\\\project_files_git\\\\leeseunglab\" commit -m \"$\\(cat <<''EOF''\nAdd base URL handling for GitHub Pages images\n\n- Update Image and BackgroundImage components to resolve paths with BASE_URL\n- Include all source code and image updates\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "mcp__playwright__browser_press_key",
+      "WebFetch(domain:terrerlab.com)",
+      "Bash(tasklist:*)",
+      "WebFetch(domain:cdn.prod.website-files.com)"
     ]
   }
 }

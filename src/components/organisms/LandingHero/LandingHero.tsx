@@ -23,6 +23,7 @@ export function LandingHero({ className }: LandingHeroProps) {
       description={HERO_CONFIG.description}
       scrollTarget={HERO_CONFIG.scrollTarget}
       overlayOpacity={HERO_CONFIG.overlayOpacity}
+      minHeight="three-quarter"
       className={cn(className)}
     />
   );

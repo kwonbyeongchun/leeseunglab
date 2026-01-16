@@ -81,6 +81,7 @@ export interface ResearchTheme {
   title: string;
   description: string;
   href: string;
+  backgroundImage?: string; // 카드 배경 이미지
   expandIcon?: string;   // 확장 아이콘 (down arrow)
   collapseIcon?: string; // 축소 아이콘 (up arrow)
 }

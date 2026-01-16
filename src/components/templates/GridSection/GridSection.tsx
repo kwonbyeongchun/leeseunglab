@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react';
-import { motion } from 'framer-motion';
 import { Container } from '@/components/atoms/Container';
-import { SectionTitle } from '@/components/molecules/SectionTitle';
+import { DecoratedSectionHeader } from '@/components/organisms/DecoratedSectionHeader';
 import { Spacer } from '@/components/atoms/Spacer';
 import { cn } from '@/utils/cn';
 
@@ -66,20 +65,13 @@ export function GridSection({
     >
       <Container maxWidth="xl">
         {(title || subtitle) && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <SectionTitle
+          <>
+            <DecoratedSectionHeader
               title={title || ''}
               subtitle={subtitle}
-              color={background === 'dark' || background === 'primary' ? 'white' : 'text'}
-              align="center"
             />
             <Spacer size="2xl" />
-          </motion.div>
+          </>
         )}
 
         <div className={cn('grid', columnClasses[columns], gapClasses[gap])}>

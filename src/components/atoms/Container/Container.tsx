@@ -36,11 +36,12 @@ export function Container({
   return (
     <Component
       className={cn(
-        'w-full mx-auto',
+        'w-full',
         maxWidthClasses[maxWidth],
         paddingClasses[padding],
         className
       )}
+      style={{ marginLeft: 'auto', marginRight: 'auto' }}
     >
       {children}
     </Component>

@@ -1,9 +1,18 @@
 import { motion } from 'framer-motion';
-import { Heading } from '@/components/atoms/Heading';
-import { Paragraph } from '@/components/atoms/Paragraph';
-import { ProfileImage } from '@/components/molecules/ProfileImage';
-import { Spacer } from '@/components/atoms/Spacer';
+import { AboutTextBox } from '@/components/molecules/AboutTextBox';
 import { cn } from '@/utils/cn';
+
+// public 폴더 이미지에 base URL 자동 추가
+const getImageSrc = (src: string): string => {
+  if (src.startsWith('http') || src.startsWith('data:')) {
+    return src;
+  }
+  const baseUrl = import.meta.env.BASE_URL || '/';
+  if (src.startsWith('/') && !src.startsWith(baseUrl)) {
+    return `${baseUrl.replace(/\/$/, '')}${src}`;
+  }
+  return src;
+};
 
 export interface AboutContentProps {
   image: string;
@@ -23,23 +32,22 @@ export function AboutContent({
   return (
     <div
       className={cn(
-        'grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center',
+        'flex flex-col md:flex-row gap-8 md:gap-12 items-start',
         className
       )}
+      style={{ maxWidth: '1200px', margin: '0 auto' }}
     >
       <motion.div
         initial={{ opacity: 0, x: -30 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="flex justify-center md:justify-end"
+        className="w-full md:w-1/2 flex-shrink-0"
       >
-        <ProfileImage
-          src={image}
+        <img
+          src={getImageSrc(image)}
           alt={imageAlt}
-          size="xl"
-          shape="rounded"
-          className="w-full max-w-md aspect-square"
+          style={{ height: '374px', objectFit: 'cover', width: '100%' }}
         />
       </motion.div>
 
@@ -48,16 +56,9 @@ export function AboutContent({
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.2 }}
+        className="flex-1"
       >
-        <Heading level={1} color="text">
-          {title}
-        </Heading>
-
-        <Spacer size="lg" />
-
-        <Paragraph color="light" size="md" className="leading-relaxed">
-          {description}
-        </Paragraph>
+        <AboutTextBox title={title} description={description} />
       </motion.div>
     </div>
   );
