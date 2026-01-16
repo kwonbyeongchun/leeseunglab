@@ -6,7 +6,7 @@ import { ProfileImage } from '@/components/molecules/ProfileImage';
 import { SocialIcon } from '@/components/molecules/SocialIcon';
 import { Spacer } from '@/components/atoms/Spacer';
 import { cn } from '@/utils/cn';
-import { staggerItem, cardHover, imageHover } from '@/utils/animations';
+import { staggerItem, imageHover } from '@/utils/animations';
 import type { TeamMember } from '@/types';
 
 export interface TeamMemberCardProps extends TeamMember {
