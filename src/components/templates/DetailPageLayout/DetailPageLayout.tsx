@@ -7,7 +7,6 @@ import { Spacer } from '@/components/atoms/Spacer';
 import { Link } from '@/components/atoms/Link';
 import { Icon } from '@/components/atoms/Icon';
 import { PageLayout } from '../PageLayout';
-import { cn } from '@/utils/cn';
 
 export interface DetailPageLayoutProps {
   children: ReactNode;
@@ -30,7 +29,7 @@ export function DetailPageLayout({
   return (
     <PageLayout>
       {/* Header Section */}
-      <section className="bg-[var(--color-primary)] pt-32 pb-16">
+      <section className="bg-[var(--color-primary)] pt-16 pb-16">
         <Container maxWidth="xl">
           {backLink && (
             <motion.div
@@ -72,11 +71,9 @@ export function DetailPageLayout({
       </section>
 
       {/* Content Section */}
-      <section className={cn('py-16 md:py-24', className)}>
-        <Container maxWidth="xl">
-          {children}
-        </Container>
-      </section>
+      <div className={className}>
+        {children}
+      </div>
     </PageLayout>
   );
 }
