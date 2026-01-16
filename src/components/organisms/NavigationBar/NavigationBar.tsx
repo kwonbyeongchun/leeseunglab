@@ -31,8 +31,8 @@ export function NavigationBar({ className }: NavigationBarProps) {
         'fixed top-0 left-0 right-0 z-50',
         'transition-all duration-[var(--transition-normal)]',
         isScrolled
-          ? 'bg-white shadow-md py-2'
-          : 'bg-white py-4',
+          ? 'bg-white shadow-md'
+          : 'bg-white',
         className
       )}
     >
@@ -41,7 +41,7 @@ export function NavigationBar({ className }: NavigationBarProps) {
         style={{
           maxWidth: '940px',
           width: '100%',
-          margin: '0 auto',
+          margin: '10px auto',
           padding: '0 100px'
         }}
       >
@@ -51,7 +51,7 @@ export function NavigationBar({ className }: NavigationBarProps) {
             src="/images/terrerlab/terrer-lab-logo.png"
             alt="Terrer Lab"
             href="/"
-            height={40}
+            height={51}
             className="object-contain"
           />
         </div>

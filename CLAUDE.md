@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Communication Language (소통 언어)
+
+**모든 메시지는 한국어로 작성한다.**
+
 ## Project Overview
 
 This is a clone project of https://www.terrerlab.com/

@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
+
+/* Tailwind Theme Extension */
+@theme {
+  --font-lato: 'Lato', sans-serif;
+  --font-open-sans: 'Open Sans', sans-serif;
+}
+
 /* CSS Variables */
 :root {
   --color-primary: #2B5329;
@@ -17,6 +26,8 @@
   --font-sans: 'Inter', sans-serif;
   --font-serif: 'Playfair Display', serif;
   --font-display: 'Poppins', sans-serif;
+  --font-lato: 'Lato', sans-serif;
+  --font-open-sans: 'Open Sans', sans-serif;
 
   --transition-fast: 0.2s ease;
   --transition-normal: 0.4s ease;

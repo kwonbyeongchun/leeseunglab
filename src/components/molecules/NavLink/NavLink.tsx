@@ -22,10 +22,11 @@ export function NavLink({
       href={href}
       variant="nav"
       className={cn(
-        'relative py-2 px-1',
+        'relative',
         isActive && 'text-[var(--color-primary)]',
         className
       )}
+      style={{ padding: '20px 4px' }}
       onClick={onClick}
     >
       <Text

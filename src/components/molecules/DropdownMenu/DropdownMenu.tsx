@@ -38,7 +38,8 @@ export function DropdownMenu({
       <Button
         variant="ghost"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1 py-2 px-1"
+        className="flex items-center gap-1"
+        style={{ padding: '20px 4px' }}
         disableAnimation
       >
         <Text size="sm" weight={500}>

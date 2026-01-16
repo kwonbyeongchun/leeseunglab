@@ -3,7 +3,7 @@ import { ContentSection } from '@/components/templates/ContentSection';
 import { GridSection } from '@/components/templates/GridSection';
 import { LandingHero } from '@/components/organisms/LandingHero';
 import { AboutContent } from '@/components/organisms/AboutContent';
-import { ResearchThemeCard } from '@/components/organisms/ResearchThemeCard';
+import { ResearchAccordion } from '@/components/organisms/ResearchAccordion';
 import { BigQuestionCard } from '@/components/organisms/BigQuestionCard';
 import { TeamMemberCard } from '@/components/organisms/TeamMemberCard';
 import { AffiliationLogo } from '@/components/organisms/AffiliationLogo';
@@ -24,7 +24,7 @@ export function HomePage() {
       {/* Hero Section */}
       <LandingHero />
 
-      {/* About Section */}
+      {/* About Section - Lab Introduction */}
       <ContentSection
         id="about"
         background="white"
@@ -33,29 +33,35 @@ export function HomePage() {
         <AboutContent
           image={featuredMember.image}
           imageAlt={featuredMember.name}
-          title={`About ${featuredMember.name.split(' ')[0]}`}
-          description={featuredMember.bio}
+          title="Terrer Lab"
+          description="The focus of the Terrer Lab is terrestrial ecosystem ecology. We study how climate change and anthropogenic activities affect ecosystems, and, conversely, how ecosystem dynamics modulate climate change. We synthesize large datasets of field observations and remote sensing data using meta-analysis, machine learning, and other statistical methods to better understand the global functioning of terrestrial ecosystems."
         />
       </ContentSection>
 
       {/* Research Themes Section */}
-      <GridSection
+      <ContentSection
         id="research"
-        title="Research Themes"
-        subtitle="Our core research areas focus on understanding and predicting the terrestrial carbon cycle"
-        columns={2}
-        gap="lg"
         background="light"
         padding="xl"
       >
-        {researchThemes.map((theme, index) => (
-          <ResearchThemeCard
-            key={theme.id}
-            {...theme}
-            index={index}
-          />
-        ))}
-      </GridSection>
+        <div className="mx-auto max-w-4xl">
+          <h2 className="mb-4 text-center font-lato text-3xl font-bold text-[#1a1a1a] md:text-4xl">
+            Research Themes
+          </h2>
+          <p className="mb-8 text-center font-open-sans text-lg text-gray-600">
+            Our core research areas focus on understanding and predicting the terrestrial carbon cycle
+          </p>
+          <div className="divide-y divide-gray-200 border-t border-gray-200">
+            {researchThemes.map((theme, index) => (
+              <ResearchAccordion
+                key={theme.id}
+                {...theme}
+                index={index}
+              />
+            ))}
+          </div>
+        </div>
+      </ContentSection>
 
       {/* Big Questions Section */}
       <GridSection

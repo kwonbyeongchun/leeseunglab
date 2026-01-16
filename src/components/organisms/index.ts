@@ -17,6 +17,7 @@ export type { AboutContentProps } from './AboutContent';
 // Research
 export { ResearchThemeCard } from './ResearchThemeCard';
 export type { ResearchThemeCardProps } from './ResearchThemeCard';
+export { ResearchAccordion } from './ResearchAccordion';
 export { BigQuestionCard } from './BigQuestionCard';
 export type { BigQuestionCardProps } from './BigQuestionCard';
 export { BigQuestionContent } from './BigQuestionContent';

@@ -12,6 +12,7 @@ export interface LinkProps {
   variant?: LinkVariant;
   color?: ColorVariant;
   className?: string;
+  style?: React.CSSProperties;
   disableAnimation?: boolean;
   onClick?: () => void;
   'aria-label'?: string;
@@ -45,6 +46,7 @@ export function Link({
   variant = 'default',
   color,
   className,
+  style,
   disableAnimation = false,
   onClick,
   'aria-label': ariaLabel,
@@ -81,6 +83,7 @@ export function Link({
           target={external ? '_blank' : undefined}
           rel={external ? 'noopener noreferrer' : undefined}
           className={classes}
+          style={style}
           onClick={onClick}
           aria-label={ariaLabel}
           variants={scaleOnHover}
@@ -98,6 +101,7 @@ export function Link({
         target={external ? '_blank' : undefined}
         rel={external ? 'noopener noreferrer' : undefined}
         className={classes}
+        style={style}
         onClick={onClick}
         aria-label={ariaLabel}
       >
@@ -115,7 +119,7 @@ export function Link({
         whileTap="tap"
         className="inline-block"
       >
-        <RouterLink to={href} className={classes} onClick={handleHashClick} aria-label={ariaLabel}>
+        <RouterLink to={href} className={classes} style={style} onClick={handleHashClick} aria-label={ariaLabel}>
           {children}
         </RouterLink>
       </motion.div>
@@ -123,7 +127,7 @@ export function Link({
   }
 
   return (
-    <RouterLink to={href} className={classes} onClick={handleHashClick} aria-label={ariaLabel}>
+    <RouterLink to={href} className={classes} style={style} onClick={handleHashClick} aria-label={ariaLabel}>
       {children}
     </RouterLink>
   );

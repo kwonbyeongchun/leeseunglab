@@ -81,6 +81,8 @@ export interface ResearchTheme {
   title: string;
   description: string;
   href: string;
+  expandIcon?: string;   // 확장 아이콘 (down arrow)
+  collapseIcon?: string; // 축소 아이콘 (up arrow)
 }
 
 // Affiliation
