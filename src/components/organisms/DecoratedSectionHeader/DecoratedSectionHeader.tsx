@@ -1,6 +1,4 @@
 import { motion } from 'framer-motion';
-import { Heading } from '@/components/atoms/Heading';
-import { Span } from '@/components/atoms/Span';
 import { cn } from '@/utils/cn';
 
 // public 폴더 이미지에 base URL 자동 추가
@@ -41,49 +39,38 @@ export function DecoratedSectionHeader({
 }: DecoratedSectionHeaderProps) {
   return (
     <motion.div
-      className={cn('flex flex-col items-center gap-2 text-center', className)}
+      className={cn('flex flex-col items-center gap-0 text-center', className)}
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-100px' }}
     >
       {/* 위 마커 */}
-      <motion.div variants={itemVariants} className="flex items-center justify-center">
+      <motion.div variants={itemVariants} className="flex items-center justify-center" style={{ marginBottom: '15px' }}>
         <img
           src={getImageSrc('/images/terrerlab/up_green.png')}
           alt=""
-          className="w-[60px] h-[60px]"
         />
       </motion.div>
 
-      {/* 서브타이틀 */}
-      {subtitle && (
-        <motion.div variants={itemVariants}>
-          <Span
-            size="xs"
-            color="muted"
-            uppercase
-            letterSpacing="widest"
-            className="font-medium tracking-[0.2em]"
-          >
+      {/* 서브타이틀 + 메인 타이틀 */}
+      <div className="flex flex-col items-center gap-0">
+        {subtitle && (
+          <motion.span variants={itemVariants} className="font-medium tracking-[0.2em] leading-none uppercase text-xs" style={{ color: '#677081' }}>
             {subtitle}
-          </Span>
-        </motion.div>
-      )}
+          </motion.span>
+        )}
 
-      {/* 메인 타이틀 */}
-      <motion.div variants={itemVariants}>
-        <Heading level={3} style={{ fontWeight: 700, color: '#00380A' }}>
+        <motion.h3 variants={itemVariants} className="m-0 leading-none text-2xl md:text-3xl" style={{ fontWeight: 700, color: '#00380A' }}>
           {title}
-        </Heading>
-      </motion.div>
+        </motion.h3>
+      </div>
 
       {/* 아래 마커 */}
-      <motion.div variants={itemVariants} className="flex items-center justify-center">
+      <motion.div variants={itemVariants} className="flex items-center justify-center" style={{ marginTop: '15px' }}>
         <img
           src={getImageSrc('/images/terrerlab/down_green.png')}
           alt=""
-          className="w-[60px] h-[60px]"
         />
       </motion.div>
     </motion.div>

@@ -39,8 +39,8 @@ export function ResearchCard({
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.2 }}
       className={cn(
-        'relative block overflow-hidden rounded-lg',
-        'min-h-[350px] md:min-h-[400px]',
+        'relative block overflow-hidden',
+        'min-h-[420px] w-[560px]',
         'group cursor-pointer',
         className
       )}
@@ -51,14 +51,14 @@ export function ResearchCard({
       }}
     >
       {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-black/40 transition-all duration-300 group-hover:bg-black/50" />
+      <div className="absolute inset-0 bg-black/60 transition-all duration-300 group-hover:bg-black/70" />
 
       {/* Content */}
-      <div className="relative z-10 flex h-full min-h-[350px] md:min-h-[400px] flex-col justify-start p-6 md:p-8">
-        <h2 className="mb-4 font-lato text-xl font-bold text-white md:text-2xl lg:text-3xl">
+      <div className="relative z-10 flex h-full min-h-[420px] flex-col justify-start pb-6 md:pb-8" style={{ paddingTop: '50px', paddingLeft: '32px', paddingRight: '32px' }}>
+        <h2 className="font-lato text-xl font-semibold text-white md:text-2xl text-center" style={{ marginBottom: '25px' }}>
           {title}
         </h2>
-        <p className="font-open-sans text-sm leading-relaxed text-white/90 md:text-base">
+        <p className="font-open-sans text-base leading-relaxed text-white/90 md:text-lg">
           {description}
         </p>
       </div>

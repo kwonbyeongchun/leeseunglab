@@ -4,6 +4,7 @@ import { GridSection } from '@/components/templates/GridSection';
 import { LandingHero } from '@/components/organisms/LandingHero';
 import { AboutContent } from '@/components/organisms/AboutContent';
 import { ResearchCard } from '@/components/organisms/ResearchCard';
+import { DecoratedSectionHeader } from '@/components/organisms/DecoratedSectionHeader';
 import { BigQuestionCard } from '@/components/organisms/BigQuestionCard';
 import { TeamMemberCard } from '@/components/organisms/TeamMemberCard';
 import { AffiliationLogo } from '@/components/organisms/AffiliationLogo';
@@ -49,12 +50,13 @@ export function HomePage() {
         background="white"
         padding="xl"
       >
-        <div className="max-w-5xl" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-          <h2 className="mb-2 text-center font-lato text-3xl font-bold text-[#00380A] md:text-4xl">
-            Research Themes
-          </h2>
-          <div className="mx-auto mb-8 h-1 w-12 bg-[#00380A]" />
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="max-w-[1160px]" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+          <DecoratedSectionHeader
+            title="Research Themes"
+            subtitle="OUR INTERSECTED STUDIES"
+          />
+          <Spacer size="2xl" />
+          <div className="flex flex-col md:flex-row justify-center gap-10">
             {researchThemes.map((theme, index) => (
               <ResearchCard
                 key={theme.id}
