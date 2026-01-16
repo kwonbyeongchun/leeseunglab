@@ -7,6 +7,8 @@ export type { MobileNavigationProps } from './MobileNavigation';
 // Hero
 export { HeroContent } from './HeroContent';
 export type { HeroContentProps } from './HeroContent';
+export { LandingHero } from './LandingHero';
+export type { LandingHeroProps } from './LandingHero';
 
 // About
 export { AboutContent } from './AboutContent';

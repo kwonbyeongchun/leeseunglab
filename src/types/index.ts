@@ -44,6 +44,7 @@ export interface BigQuestion {
   highlights: string[];
   bulletPoints: string[];
   icon: string;
+  image?: string;
 }
 
 // Publication

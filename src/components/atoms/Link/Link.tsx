@@ -57,6 +57,22 @@ export function Link({
 
   const shouldAnimate = variant === 'button' && !disableAnimation;
 
+  // Handle hash links for smooth scrolling
+  const handleHashClick = (e: React.MouseEvent) => {
+    if (href.includes('#')) {
+      const hash = href.split('#')[1];
+      if (hash) {
+        e.preventDefault();
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+          window.history.pushState(null, '', href);
+        }
+      }
+    }
+    onClick?.();
+  };
+
   if (external || href.startsWith('http') || href.startsWith('mailto:')) {
     if (shouldAnimate) {
       return (
@@ -99,7 +115,7 @@ export function Link({
         whileTap="tap"
         className="inline-block"
       >
-        <RouterLink to={href} className={classes} onClick={onClick} aria-label={ariaLabel}>
+        <RouterLink to={href} className={classes} onClick={handleHashClick} aria-label={ariaLabel}>
           {children}
         </RouterLink>
       </motion.div>
@@ -107,7 +123,7 @@ export function Link({
   }
 
   return (
-    <RouterLink to={href} className={classes} onClick={onClick} aria-label={ariaLabel}>
+    <RouterLink to={href} className={classes} onClick={handleHashClick} aria-label={ariaLabel}>
       {children}
     </RouterLink>
   );

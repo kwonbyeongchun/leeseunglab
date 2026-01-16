@@ -32,27 +32,28 @@ export function NavigationBar({ className }: NavigationBarProps) {
         'transition-all duration-[var(--transition-normal)]',
         isScrolled
           ? 'bg-white shadow-md py-2'
-          : 'bg-transparent py-4',
+          : 'bg-white py-4',
         className
       )}
     >
-      <Container maxWidth="xl" className="flex items-center justify-between">
+      <div
+        className="flex items-center justify-between"
+        style={{
+          maxWidth: '940px',
+          width: '100%',
+          margin: '0 auto',
+          padding: '0 100px'
+        }}
+      >
         {/* Logo */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center">
           <LogoImage
-            src="/images/mit-logo.svg"
-            alt="MIT Logo"
+            src="/images/terrerlab/terrer-lab-logo.png"
+            alt="Terrer Lab"
             href="/"
             height={40}
+            className="object-contain"
           />
-          <Text
-            size="lg"
-            weight={600}
-            color={isScrolled ? 'text' : 'white'}
-            className="hidden sm:block"
-          >
-            Terrer Lab
-          </Text>
         </div>
 
         {/* Desktop Navigation */}
@@ -62,9 +63,7 @@ export function NavigationBar({ className }: NavigationBarProps) {
               key={item.href}
               href={item.href}
               label={item.label}
-              className={cn(
-                isScrolled ? 'text-[var(--color-text)]' : 'text-white'
-              )}
+              className="text-[var(--color-text)] hover:text-[var(--color-primary)]"
             />
           ))}
 
@@ -84,7 +83,7 @@ export function NavigationBar({ className }: NavigationBarProps) {
           isOpen={isMobileMenuOpen}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         />
-      </Container>
+      </div>
 
       {/* Mobile Navigation */}
       <div

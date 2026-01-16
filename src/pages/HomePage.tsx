@@ -1,7 +1,7 @@
 import { PageLayout } from '@/components/templates/PageLayout';
-import { HeroSection } from '@/components/templates/HeroSection';
 import { ContentSection } from '@/components/templates/ContentSection';
 import { GridSection } from '@/components/templates/GridSection';
+import { LandingHero } from '@/components/organisms/LandingHero';
 import { AboutContent } from '@/components/organisms/AboutContent';
 import { ResearchThemeCard } from '@/components/organisms/ResearchThemeCard';
 import { BigQuestionCard } from '@/components/organisms/BigQuestionCard';
@@ -22,14 +22,7 @@ export function HomePage() {
   return (
     <PageLayout>
       {/* Hero Section */}
-      <HeroSection
-        backgroundImage="/images/hero-bg.jpg"
-        subtitle="MIT Department of Civil and Environmental Engineering"
-        title="Terrer Lab"
-        description="Advancing understanding of terrestrial carbon ecology and natural climate solutions through data-driven research at the interface of experiments and models."
-        scrollTarget="#about"
-        overlayOpacity={0.6}
-      />
+      <LandingHero />
 
       {/* About Section */}
       <ContentSection

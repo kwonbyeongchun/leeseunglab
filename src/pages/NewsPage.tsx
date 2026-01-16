@@ -12,7 +12,7 @@ const newsItems: NewsItemData[] = [
     title: 'New Nature Paper on Forest Carbon Storage',
     date: '2024-01-15',
     excerpt: 'Our latest research reveals new insights into how forests store carbon under changing climate conditions.',
-    image: '/images/news/forest-carbon.jpg',
+    image: '/images/terrerlab/653e68e5acd2104c5fe71745_1.jpg',
     href: '/news/nature-paper-2024',
   },
   {
@@ -20,7 +20,7 @@ const newsItems: NewsItemData[] = [
     title: 'César Terrer Receives Research Award',
     date: '2024-01-10',
     excerpt: 'Dr. César Terrer has been recognized for his outstanding contributions to climate science research.',
-    image: '/images/news/award.jpg',
+    image: '/images/terrerlab/653e693d87d06c306e0cac92_2.jpg',
     href: '/news/research-award',
   },
   {
@@ -28,7 +28,7 @@ const newsItems: NewsItemData[] = [
     title: 'New PhD Students Join the Lab',
     date: '2023-12-20',
     excerpt: 'We welcome three new PhD students to the Terrer Lab this semester.',
-    image: '/images/news/new-students.jpg',
+    image: '/images/terrerlab/65538c95d24377262e6a84ef_jason-goodman-Oalh2MojUuk-unsplash.jpg',
     href: '/news/new-phd-students',
   },
   {
@@ -50,7 +50,7 @@ const newsItems: NewsItemData[] = [
     title: 'Publication in Nature Climate Change',
     date: '2023-11-10',
     excerpt: 'Our analysis of nutrient limitations on global carbon uptake published.',
-    image: '/images/news/ncc-paper.jpg',
+    image: '/images/terrerlab/653e693de9279c39048540c7_3.jpg',
     href: '/news/ncc-publication',
   },
 ];

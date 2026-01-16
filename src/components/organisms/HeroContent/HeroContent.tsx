@@ -37,7 +37,7 @@ export function HeroContent({
     <motion.div
       className={cn('flex flex-col items-center text-center', className)}
       variants={containerVariants}
-      initial="hidden"
+      initial={false}
       animate="visible"
     >
       <motion.div variants={heroSubtitle}>
