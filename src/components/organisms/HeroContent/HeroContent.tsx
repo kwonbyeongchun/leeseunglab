@@ -55,7 +55,7 @@ export function HeroContent({
       <Spacer size="md" />
 
       <motion.div variants={heroTitle}>
-        <Heading level={1} color="white" className="max-w-4xl text-3xl md:text-4xl text-white">
+        <Heading level={1} color="white" className="max-w-4xl text-2xl md:text-3xl text-white">
           {title}
         </Heading>
       </motion.div>
@@ -63,7 +63,7 @@ export function HeroContent({
       <Spacer size="lg" />
 
       <motion.div variants={heroDescription}>
-        <Paragraph color="white" size="lg" className="max-w-2xl opacity-90">
+        <Paragraph color="white" size="xl" className="max-w-2xl opacity-90">
           {description}
         </Paragraph>
       </motion.div>
