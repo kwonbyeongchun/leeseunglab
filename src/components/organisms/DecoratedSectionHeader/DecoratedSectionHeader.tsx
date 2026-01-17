@@ -13,6 +13,8 @@ const getImageSrc = (src: string): string => {
 export interface DecoratedSectionHeaderProps {
   title: string;
   subtitle?: string;
+  variant?: 'dark' | 'light';
+  useOriginalMarker?: boolean;
   className?: string;
 }
 
@@ -35,8 +37,15 @@ const itemVariants = {
 export function DecoratedSectionHeader({
   title,
   subtitle,
+  variant = 'dark',
+  useOriginalMarker = false,
   className,
 }: DecoratedSectionHeaderProps) {
+  const isLight = variant === 'light';
+  const subtitleColor = isLight ? '#ffffff' : '#677081';
+  const titleColor = isLight ? '#ffffff' : '#00380A';
+  const markerFilter = isLight && !useOriginalMarker ? 'brightness(0) invert(1)' : undefined;
+
   return (
     <motion.div
       className={cn('flex flex-col items-center gap-0 text-center', className)}
@@ -50,18 +59,19 @@ export function DecoratedSectionHeader({
         <img
           src={getImageSrc('/images/terrerlab/up_green.png')}
           alt=""
+          style={{ filter: markerFilter }}
         />
       </motion.div>
 
       {/* 서브타이틀 + 메인 타이틀 */}
       <div className="flex flex-col items-center gap-0">
         {subtitle && (
-          <motion.span variants={itemVariants} className="font-medium tracking-[0.2em] leading-none uppercase text-xs" style={{ color: '#677081' }}>
+          <motion.span variants={itemVariants} className="font-medium tracking-[0.2em] leading-none uppercase text-xs" style={{ color: subtitleColor }}>
             {subtitle}
           </motion.span>
         )}
 
-        <motion.h3 variants={itemVariants} className="m-0 leading-none text-2xl md:text-3xl" style={{ fontWeight: 700, color: '#00380A' }}>
+        <motion.h3 variants={itemVariants} className="m-0 leading-none text-2xl md:text-3xl" style={{ fontWeight: 700, color: titleColor }}>
           {title}
         </motion.h3>
       </div>
@@ -71,6 +81,7 @@ export function DecoratedSectionHeader({
         <img
           src={getImageSrc('/images/terrerlab/down_green.png')}
           alt=""
+          style={{ filter: markerFilter }}
         />
       </motion.div>
     </motion.div>

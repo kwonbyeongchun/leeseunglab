@@ -4,15 +4,12 @@ import { GridSection } from '@/components/templates/GridSection';
 import { LandingHero } from '@/components/organisms/LandingHero';
 import { AboutContent } from '@/components/organisms/AboutContent';
 import { ResearchCard } from '@/components/organisms/ResearchCard';
+import { DecoratedSectionHeader } from '@/components/organisms/DecoratedSectionHeader';
 import { BigQuestionCard } from '@/components/organisms/BigQuestionCard';
-import { TeamMemberCard } from '@/components/organisms/TeamMemberCard';
-import { AffiliationLogo } from '@/components/organisms/AffiliationLogo';
+import { AffiliationsSection } from '@/components/organisms/AffiliationsSection';
 import { Spacer } from '@/components/atoms/Spacer';
-import { Link } from '@/components/atoms/Link';
 import { researchThemes } from '@/data/researchThemes';
 import { bigQuestions } from '@/data/bigQuestions';
-import { teamMembers } from '@/data/teamMembers';
-import { affiliations } from '@/data/affiliations';
 
 export function HomePage() {
   // Show all 8 questions in a 4-column grid (like original site)
@@ -69,76 +66,58 @@ export function HomePage() {
       <Spacer size="4xl" />
 
       {/* Big Questions Section */}
-      <GridSection
-        id="big-questions"
-        title="Our Big Questions"
-        subtitle="RESEARCH INTERESTS"
-        columns={4}
-        gap="md"
-        background="white"
-        padding="xl"
-      >
-        {displayedQuestions.map((question, index) => (
-          <BigQuestionCard
-            key={question.id}
-            {...question}
-            index={index}
-          />
-        ))}
-      </GridSection>
-
-
-      {/* Team Preview Section */}
-      <GridSection
-        id="team"
-        title="Our Team"
-        subtitle="Meet the researchers behind our work"
-        columns={4}
-        gap="md"
-        background="light"
-        padding="xl"
-      >
-        {teamMembers.slice(0, 8).map((member, index) => (
-          <TeamMemberCard
-            key={member.id}
-            {...member}
-            index={index}
-            variant="compact"
-          />
-        ))}
-      </GridSection>
-
-      {/* View All Team Link */}
-      <ContentSection background="light" padding="sm">
-        <div className="text-center">
-          <Link
-            href="/team"
-            variant="primary"
-            className="inline-flex items-center gap-2 text-lg font-medium"
-          >
-            Meet the full team
-            <span>→</span>
-          </Link>
-        </div>
-      </ContentSection>
-
-      <Spacer size="xl" />
-
-      {/* Affiliations Section */}
       <ContentSection
+        id="big-questions"
         background="white"
-        padding="lg"
+        padding="xl"
       >
-        <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16">
-          {affiliations.map((affiliation, index) => (
-            <AffiliationLogo
-              key={affiliation.id}
-              {...affiliation}
+        <DecoratedSectionHeader
+          title="Our Big Questions"
+          subtitle="RESEARCH INTERESTS"
+        />
+        <Spacer size="2xl" />
+
+        {/* First row - 4 cards */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          {displayedQuestions.slice(0, 4).map((question, index) => (
+            <BigQuestionCard
+              key={question.id}
+              {...question}
               index={index}
             />
           ))}
         </div>
+
+        {/* Divider lines */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-6xl mx-auto" style={{ marginTop: 20, marginBottom: 20 }}>
+          <div className="w-full h-[1px] bg-[#84889A]" />
+          <div className="w-full h-[1px] bg-[#84889A]" />
+          <div className="w-full h-[1px] bg-[#84889A]" />
+          <div className="w-full h-[1px] bg-[#84889A]" />
+        </div>
+
+        {/* Second row - 4 cards */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          {displayedQuestions.slice(4, 8).map((question, index) => (
+            <BigQuestionCard
+              key={question.id}
+              {...question}
+              index={index + 4}
+            />
+          ))}
+        </div>
+
+        {/* Bottom divider lines */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-6xl mx-auto" style={{ marginTop: 20 }}>
+          <div className="w-full h-[1px] bg-[#84889A]" />
+          <div className="w-full h-[1px] bg-[#84889A]" />
+          <div className="w-full h-[1px] bg-[#84889A]" />
+          <div className="w-full h-[1px] bg-[#84889A]" />
+        </div>
       </ContentSection>
+
+      {/* Affiliations Section */}
+      <AffiliationsSection />
     </PageLayout>
   );
 }
