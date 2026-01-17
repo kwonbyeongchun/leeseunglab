@@ -42,11 +42,11 @@ export function HeroContent({
     >
       <motion.div variants={heroSubtitle}>
         <Span
-          size="sm"
+          size="md"
           color="white"
           uppercase
           letterSpacing="wider"
-          className="opacity-90"
+          className="opacity-90 font-semibold"
         >
           {subtitle}
         </Span>
