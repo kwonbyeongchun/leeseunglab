@@ -1,0 +1,96 @@
+import { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Button } from '@/components/atoms/Button';
+import { Icon } from '@/components/atoms/Icon';
+import { Text } from '@/components/atoms/Text';
+import { cn } from '@/utils/cn';
+import { dropdownMenu } from '@/utils/animations';
+
+export interface LanguageSwitcherProps {
+  className?: string;
+}
+
+type Language = 'EN' | 'KO';
+
+const languages: { code: Language; label: string }[] = [
+  { code: 'EN', label: 'English' },
+  { code: 'KO', label: 'Korean' },
+];
+
+export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
+  const [currentLang, setCurrentLang] = useState<Language>('EN');
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const handleLanguageChange = (lang: Language) => {
+    setCurrentLang(lang);
+    setIsOpen(false);
+    // TODO: 실제 언어 변경 로직 구현
+  };
+
+  return (
+    <div
+      ref={dropdownRef}
+      className={cn('relative', className)}
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <Button
+        variant="ghost"
+        className="flex items-center gap-1"
+        style={{ padding: '20px 4px' }}
+        disableAnimation
+      >
+        <Text size="sm" weight={500}>
+          {currentLang === 'EN' ? 'English' : 'Korean'}
+        </Text>
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <Icon name="ChevronDown" size="xs" />
+        </motion.div>
+      </Button>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            variants={dropdownMenu}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="absolute top-full left-0 min-w-[120px] bg-white border border-gray-200 shadow-sm z-50"
+            style={{ marginTop: 0 }}
+          >
+            {languages.map((lang) => (
+              <button
+                key={lang.code}
+                onClick={() => handleLanguageChange(lang.code)}
+                className={cn(
+                  'flex items-center w-full h-[48px] hover:bg-[#f5f5f5] transition-colors border-b border-gray-100 last:border-b-0',
+                  currentLang === lang.code && 'bg-[#f5f5f5]'
+                )}
+                style={{ paddingLeft: '20px' }}
+              >
+                <Text size="sm" color="text" className="font-normal">
+                  {lang.label}
+                </Text>
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}

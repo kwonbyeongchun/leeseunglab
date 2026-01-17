@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { cn } from '@/utils/cn';
 import { scaleOnHover } from '@/utils/animations';
@@ -51,6 +51,9 @@ export function Link({
   onClick,
   'aria-label': ariaLabel,
 }: LinkProps) {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const classes = cn(
     variantClasses[variant],
     color && colorClasses[color],
@@ -62,13 +65,41 @@ export function Link({
   // Handle hash links for smooth scrolling
   const handleHashClick = (e: React.MouseEvent) => {
     if (href.includes('#')) {
-      const hash = href.split('#')[1];
+      const [path, hash] = href.split('#');
+      const targetPath = path || '/';
+      const currentPath = location.pathname;
+
+      // Normalize paths for comparison (handle base path /leeseunglab/)
+      const normalizeHomePath = (p: string) => {
+        const normalized = p.replace(/\/$/, ''); // Remove trailing slash
+        return normalized === '' || normalized === '/leeseunglab' ? '/' : normalized.replace('/leeseunglab', '');
+      };
+
+      const normalizedCurrent = normalizeHomePath(currentPath);
+      const normalizedTarget = normalizeHomePath(targetPath);
+
       if (hash) {
         e.preventDefault();
-        const element = document.getElementById(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-          window.history.pushState(null, '', href);
+
+        // Check if we're on the same page
+        if (normalizedCurrent === normalizedTarget) {
+          // Same page - smooth scroll
+          const element = document.getElementById(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+            window.history.pushState(null, '', href);
+          }
+        } else {
+          // Different page - navigate first, then scroll after page loads
+          navigate(targetPath);
+          // Use setTimeout to allow page to render before scrolling
+          setTimeout(() => {
+            const element = document.getElementById(hash);
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth' });
+              window.history.pushState(null, '', href);
+            }
+          }, 100);
         }
       }
     }

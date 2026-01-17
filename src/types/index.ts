@@ -9,6 +9,9 @@ export interface BaseProps {
 // Size variants
 export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
 
+// Extended size variants for spacing
+export type SpacerSize = Size | '4xl' | '5xl';
+
 // Color variants
 export type ColorVariant = 'primary' | 'secondary' | 'accent' | 'text' | 'light' | 'muted' | 'white' | 'dark';
 

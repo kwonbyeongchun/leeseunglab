@@ -1,8 +1,8 @@
 import { cn } from '@/utils/cn';
-import type { Size } from '@/types';
+import type { SpacerSize } from '@/types';
 
 export interface SpacerProps {
-  size?: Size;
+  size?: SpacerSize;
   axis?: 'horizontal' | 'vertical';
   className?: string;
 }

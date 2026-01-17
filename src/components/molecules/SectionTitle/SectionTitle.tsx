@@ -40,12 +40,13 @@ export function SectionTitle({
   title,
   subtitle,
   level = 3,
-  color = 'text',
+  color: _color = 'text',
   showDecorations = true,
   align = 'center',
   className,
   animate = true,
 }: SectionTitleProps) {
+  // Note: _color is reserved for future use
   const alignClasses = {
     left: 'text-left items-start',
     center: 'text-center items-center',

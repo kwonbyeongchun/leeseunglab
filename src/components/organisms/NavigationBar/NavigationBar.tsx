@@ -3,6 +3,7 @@ import { LogoImage } from '@/components/molecules/LogoImage';
 import { NavLink } from '@/components/molecules/NavLink';
 import { DropdownMenu } from '@/components/molecules/DropdownMenu';
 import { MenuButton } from '@/components/molecules/MenuButton';
+import { LanguageSwitcher } from '@/components/molecules/LanguageSwitcher';
 import { Container } from '@/components/atoms/Container';
 import { Text } from '@/components/atoms/Text';
 import { cn } from '@/utils/cn';
@@ -62,6 +63,8 @@ export function NavigationBar({ className }: NavigationBarProps) {
             label="News"
             items={newsDropdownItems}
           />
+
+          <LanguageSwitcher />
         </nav>
 
         {/* Mobile Menu Button */}
@@ -112,6 +115,9 @@ export function NavigationBar({ className }: NavigationBarProps) {
                 className="py-1 pl-4"
               />
             ))}
+          </div>
+          <div className="border-t border-[var(--color-border)] pt-4 mt-2">
+            <LanguageSwitcher />
           </div>
         </Container>
       </div>

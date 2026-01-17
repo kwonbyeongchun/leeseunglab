@@ -9,6 +9,7 @@ export interface ImageProps {
   className?: string;
   objectFit?: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down';
   rounded?: 'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
+  style?: React.CSSProperties;
 }
 
 const roundedClasses = {
@@ -51,15 +52,16 @@ export function Image({
   className,
   objectFit = 'cover',
   rounded = 'none',
+  style: customStyle,
 }: ImageProps) {
-  const style: React.CSSProperties = {};
+  const internalStyle: React.CSSProperties = {};
   if (height !== undefined) {
-    style.height = typeof height === 'number' ? `${height}px` : height;
-    style.maxHeight = style.height;
+    internalStyle.height = typeof height === 'number' ? `${height}px` : height;
+    internalStyle.maxHeight = internalStyle.height;
   }
   if (width !== undefined) {
-    style.width = typeof width === 'number' ? `${width}px` : width;
-    style.maxWidth = style.width;
+    internalStyle.width = typeof width === 'number' ? `${width}px` : width;
+    internalStyle.maxWidth = internalStyle.width;
   }
 
   const resolvedSrc = getImageSrc(src);
@@ -71,7 +73,7 @@ export function Image({
       width={width}
       height={height}
       loading={lazy ? 'lazy' : 'eager'}
-      style={style}
+      style={{ ...internalStyle, ...customStyle }}
       className={cn(
         objectFitClasses[objectFit],
         roundedClasses[rounded],
