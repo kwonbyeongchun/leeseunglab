@@ -3,15 +3,13 @@ import { Heading } from '@/components/atoms/Heading';
 import { Paragraph } from '@/components/atoms/Paragraph';
 import { Span } from '@/components/atoms/Span';
 import { Spacer } from '@/components/atoms/Spacer';
-import { ScrollIndicator } from '@/components/molecules/ScrollIndicator';
 import { cn } from '@/utils/cn';
-import { heroTitle, heroSubtitle, heroDescription, fadeIn } from '@/utils/animations';
+import { heroTitle, heroSubtitle, heroDescription } from '@/utils/animations';
 
 export interface HeroContentProps {
   subtitle: string;
   title: string;
   description: string;
-  scrollTarget?: string;
   className?: string;
 }
 
@@ -30,19 +28,19 @@ export function HeroContent({
   subtitle,
   title,
   description,
-  scrollTarget = '#Down',
   className,
 }: HeroContentProps) {
   return (
     <motion.div
-      className={cn('flex flex-col items-center text-center', className)}
+      className={cn('flex flex-col items-start text-left', className)}
+      style={{ maxWidth: '620px' }}
       variants={containerVariants}
       initial={false}
       animate="visible"
     >
       <motion.div variants={heroSubtitle}>
         <Span
-          size="md"
+          size="lg"
           color="white"
           uppercase
           letterSpacing="wider"
@@ -52,30 +50,22 @@ export function HeroContent({
         </Span>
       </motion.div>
 
-      <Spacer size="md" />
+      <Spacer size="lg" />
 
       <motion.div variants={heroTitle}>
-        <Heading level={1} color="white" className="max-w-4xl text-lg md:text-xl text-white">
+        <Heading level={1} color="white" className="text-[1.2rem] md:text-[2.1rem] text-white">
           {title}
         </Heading>
       </motion.div>
 
-      <Spacer size="lg" />
+      <Spacer size="md" />
 
       <motion.div variants={heroDescription}>
-        <Paragraph color="white" size="xl" className="max-w-2xl opacity-90">
+        <Paragraph color="white" size="xl" className="opacity-90">
           {description}
         </Paragraph>
       </motion.div>
 
-      <Spacer size="2xl" />
-
-      <motion.div
-        variants={fadeIn}
-        transition={{ delay: 0.8 }}
-      >
-        <ScrollIndicator href={scrollTarget} color="white" />
-      </motion.div>
     </motion.div>
   );
 }

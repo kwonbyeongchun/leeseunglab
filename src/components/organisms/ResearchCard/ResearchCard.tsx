@@ -38,9 +38,17 @@ export function ResearchCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.2 }}
+      whileHover={{
+        scale: [1, 0.9, 1.02],
+        transition: {
+          duration: 1.4,
+          times: [0, 0.2, 1],
+          ease: "easeOut"
+        }
+      }}
       className={cn(
         'relative block overflow-hidden',
-        'min-h-[420px] w-[560px]',
+        'h-[400px] max-h-[400px] w-full',
         'group cursor-pointer',
         className
       )}
@@ -51,11 +59,11 @@ export function ResearchCard({
       }}
     >
       {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-black/60 transition-all duration-300 group-hover:bg-black/70" />
+      <div className="absolute inset-0 bg-black/50" />
 
       {/* Content */}
-      <div className="relative z-10 flex h-full min-h-[420px] flex-col justify-start pb-6 md:pb-8" style={{ paddingTop: '50px', paddingLeft: '32px', paddingRight: '32px' }}>
-        <h2 className="font-lato text-xl font-semibold text-white md:text-2xl text-center" style={{ marginBottom: '25px' }}>
+      <div className="relative z-10 flex h-full flex-col justify-start pb-6 md:pb-8" style={{ paddingTop: '50px', paddingLeft: '48px', paddingRight: '48px' }}>
+        <h2 className="font-lato text-lg font-semibold text-white md:text-[28px] text-center" style={{ marginBottom: '25px' }}>
           {title}
         </h2>
         <p className="font-open-sans text-base leading-relaxed text-white/90 md:text-lg">

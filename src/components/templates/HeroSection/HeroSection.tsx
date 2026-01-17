@@ -1,8 +1,9 @@
 import type { ReactNode } from 'react';
+import { motion } from 'framer-motion';
 import { BackgroundImage } from '@/components/atoms/BackgroundImage';
 import { Overlay } from '@/components/atoms/Overlay';
-import { Container } from '@/components/atoms/Container';
 import { HeroContent } from '@/components/organisms/HeroContent';
+import { ScrollIndicator } from '@/components/molecules/ScrollIndicator';
 import { cn } from '@/utils/cn';
 
 export interface HeroSectionProps {
@@ -38,31 +39,41 @@ export function HeroSection({
   return (
     <section
       className={cn(
-        'relative flex items-center justify-center',
+        'relative flex items-center justify-start overflow-hidden',
         minHeightClasses[minHeight],
         className
       )}
     >
       <BackgroundImage
         src={backgroundImage}
-        className="absolute inset-0"
+        className="absolute inset-0 w-full h-full"
+        size="cover"
       />
 
       <Overlay opacity={overlayOpacity} />
 
-      <Container
-        maxWidth="xl"
-        className="relative z-10 py-20"
+      <div
+        className="relative z-10"
+        style={{ marginLeft: 'calc(100vw / 6)' }}
       >
         {children || (
           <HeroContent
             subtitle={subtitle}
             title={title}
             description={description}
-            scrollTarget={scrollTarget}
           />
         )}
-      </Container>
+      </div>
+
+      {/* Floating scroll indicator */}
+      <motion.div
+        className="absolute bottom-8 right-8 z-20"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8, duration: 0.5 }}
+      >
+        <ScrollIndicator href={scrollTarget} color="white" />
+      </motion.div>
     </section>
   );
 }

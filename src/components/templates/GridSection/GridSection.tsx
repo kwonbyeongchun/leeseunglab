@@ -11,9 +11,11 @@ export interface GridSectionProps {
   subtitle?: string;
   columns?: 1 | 2 | 3 | 4;
   gap?: 'sm' | 'md' | 'lg';
+  customGap?: number;
   background?: 'white' | 'light' | 'dark' | 'primary';
   padding?: 'sm' | 'md' | 'lg' | 'xl';
   className?: string;
+  containerMaxWidth?: number;
 }
 
 export function GridSection({
@@ -23,9 +25,11 @@ export function GridSection({
   subtitle,
   columns = 3,
   gap = 'md',
+  customGap,
   background = 'white',
   padding = 'lg',
   className,
+  containerMaxWidth,
 }: GridSectionProps) {
   const backgroundClasses = {
     white: 'bg-white',
@@ -63,19 +67,24 @@ export function GridSection({
         className
       )}
     >
-      <Container maxWidth="xl">
-        {(title || subtitle) && (
-          <>
-            <DecoratedSectionHeader
-              title={title || ''}
-              subtitle={subtitle}
-            />
-            <Spacer size="2xl" />
-          </>
-        )}
+      <Container maxWidth={containerMaxWidth ? 'none' : 'xl'}>
+        <div style={containerMaxWidth ? { maxWidth: containerMaxWidth, margin: '0 auto' } : undefined}>
+          {(title || subtitle) && (
+            <>
+              <DecoratedSectionHeader
+                title={title || ''}
+                subtitle={subtitle}
+              />
+              <Spacer size="2xl" />
+            </>
+          )}
 
-        <div className={cn('grid', columnClasses[columns], gapClasses[gap])}>
-          {children}
+          <div
+            className={cn('grid', columnClasses[columns], !customGap && gapClasses[gap])}
+            style={customGap ? { gap: customGap } : undefined}
+          >
+            {children}
+          </div>
         </div>
       </Container>
     </section>

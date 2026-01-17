@@ -6,7 +6,7 @@ export interface LandingHeroProps {
 }
 
 const HERO_CONFIG = {
-  backgroundImage: '/images/terrerlab/hero-background.jpg',
+  backgroundImage: '/images/terrerlab/hero_section.jpg',
   subtitle: 'TERRER LAB | Department of Civil and Environmental Engineering, MIT',
   title: 'Ecological Understanding for a Sustainable Future',
   description: 'We leverage field and satellite data to advance knowledge about the terrestrial carbon cycle.',

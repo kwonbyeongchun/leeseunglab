@@ -26,6 +26,10 @@ This is a clone project of https://www.terrerlab.com/
 - Vite 7 (build tool and dev server)
 - ESLint 9 with TypeScript and React plugins
 
+## Git Rules (Git 규칙)
+
+**Git push는 사용자가 직접 수행한다. Claude는 push하지 않는다.**
+
 ## Commands
 
 ```bash

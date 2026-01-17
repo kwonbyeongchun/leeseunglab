@@ -26,7 +26,7 @@ export function PageLayout({
 
       {animate ? (
         <motion.main
-          className="flex-1 pt-16"
+          className="flex-1"
           variants={pageTransition}
           initial="initial"
           animate="animate"
@@ -35,7 +35,7 @@ export function PageLayout({
           {children}
         </motion.main>
       ) : (
-        <main className="flex-1 pt-16">
+        <main className="flex-1">
           {children}
         </main>
       )}

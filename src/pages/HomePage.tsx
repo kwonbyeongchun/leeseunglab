@@ -4,7 +4,6 @@ import { GridSection } from '@/components/templates/GridSection';
 import { LandingHero } from '@/components/organisms/LandingHero';
 import { AboutContent } from '@/components/organisms/AboutContent';
 import { ResearchCard } from '@/components/organisms/ResearchCard';
-import { DecoratedSectionHeader } from '@/components/organisms/DecoratedSectionHeader';
 import { BigQuestionCard } from '@/components/organisms/BigQuestionCard';
 import { TeamMemberCard } from '@/components/organisms/TeamMemberCard';
 import { AffiliationLogo } from '@/components/organisms/AffiliationLogo';
@@ -16,8 +15,6 @@ import { teamMembers } from '@/data/teamMembers';
 import { affiliations } from '@/data/affiliations';
 
 export function HomePage() {
-  // Get first team member (César Terrer) as featured
-  const featuredMember = teamMembers[0];
   // Show all 8 questions in a 4-column grid (like original site)
   const displayedQuestions = bigQuestions;
 
@@ -45,32 +42,28 @@ export function HomePage() {
       <Spacer size="4xl" />
 
       {/* Research Themes Section */}
-      <ContentSection
+      <GridSection
         id="research"
+        title="Research Themes"
+        subtitle="OUR INTERSECTED STUDIES"
+        columns={2}
+        customGap={40}
         background="white"
         padding="xl"
+        containerMaxWidth={1153}
       >
-        <div className="max-w-[1160px]" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-          <DecoratedSectionHeader
-            title="Research Themes"
-            subtitle="OUR INTERSECTED STUDIES"
+        {researchThemes.map((theme, index) => (
+          <ResearchCard
+            key={theme.id}
+            id={theme.id}
+            title={theme.title}
+            description={theme.description}
+            backgroundImage={theme.backgroundImage || '/images/terrerlab/hero-background.jpg'}
+            href={theme.href}
+            index={index}
           />
-          <Spacer size="2xl" />
-          <div className="flex flex-col md:flex-row justify-center gap-10">
-            {researchThemes.map((theme, index) => (
-              <ResearchCard
-                key={theme.id}
-                id={theme.id}
-                title={theme.title}
-                description={theme.description}
-                backgroundImage={theme.backgroundImage || '/images/terrerlab/hero-background.jpg'}
-                href={theme.href}
-                index={index}
-              />
-            ))}
-          </div>
-        </div>
-      </ContentSection>
+        ))}
+      </GridSection>
 
 
       <Spacer size="4xl" />
