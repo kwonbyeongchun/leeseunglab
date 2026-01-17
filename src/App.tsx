@@ -1,5 +1,6 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import { LanguageProvider } from '@/contexts/LanguageContext';
 import {
   HomePage,
   ResearchPage,
@@ -17,8 +18,9 @@ function App() {
   const location = useLocation();
 
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
+    <LanguageProvider>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
         <Route path="/" element={<HomePage />} />
         <Route path="/research" element={<ResearchPage />} />
         <Route path="/team" element={<TeamPage />} />
@@ -29,8 +31,9 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/join-us" element={<JoinUsPage />} />
         <Route path="/climate-snacks" element={<ClimateSnacksPage />} />
-      </Routes>
-    </AnimatePresence>
+        </Routes>
+      </AnimatePresence>
+    </LanguageProvider>
   );
 }
 

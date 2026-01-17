@@ -5,19 +5,22 @@ import { SectionHeader } from '@/components/molecules/SectionHeader';
 import { TextBlock } from '@/components/atoms/TextBlock';
 import { ClimateSnacksCard } from '@/components/molecules/ClimateSnacksCard';
 import { climateSnacksSessions } from '@/data/climateSnacks';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export function ClimateSnacksPage() {
+  const { t } = useLanguage();
+
   return (
     <DetailPageLayout
-      title="Climate Snacks"
-      subtitle="Climate Snacks are accessible conversations about climate change"
+      title={t('climateSnacks.title')}
+      subtitle={t('climateSnacks.subtitle')}
     >
       {/* Section Header */}
       <ContentSection background="white" padding="lg" style={{ paddingTop: 100, paddingBottom: 0 }}>
         <Container maxWidth="none" className="max-w-[1000px]">
-          <SectionHeader title="Climate Snacks" style={{ marginBottom: 36 }} />
+          <SectionHeader title={t('climateSnacks.title')} style={{ marginBottom: 36 }} />
           <TextBlock>
-            Our goal is to attract a wide audience, including curious non-academics, academics from other disciplines, and specialists. You can see the previous sessions recordings here:
+            {t('climateSnacks.description')}
           </TextBlock>
         </Container>
       </ContentSection>

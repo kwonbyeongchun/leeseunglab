@@ -1,0 +1,203 @@
+import { createContext, useContext, useState, useCallback, type ReactNode } from 'react';
+
+export type Language = 'EN' | 'KO';
+
+interface LanguageContextType {
+  language: Language;
+  setLanguage: (lang: Language) => void;
+  t: (key: string) => string;
+}
+
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+
+// 번역 데이터
+const translations: Record<Language, Record<string, string>> = {
+  EN: {
+    // Navigation
+    'nav.home': 'Home',
+    'nav.research': 'Research',
+    'nav.publications': 'Publications',
+    'nav.people': 'People',
+    'nav.news': 'News',
+    'nav.ourTeam': 'Our Team',
+    'nav.joinUs': 'Join Us',
+    'nav.newsUpdates': 'News & Updates',
+    'nav.climateSnacks': 'Climate Snacks',
+
+    // Home Page - Hero
+    'home.hero.subtitle': 'TERRER LAB | Department of Civil and Environmental Engineering, MIT',
+    'home.hero.title': 'Ecological Understanding for a Sustainable Future',
+    'home.hero.description': 'We leverage field and satellite data to advance knowledge about the terrestrial carbon cycle.',
+    // Home Page - About
+    'home.about.title': 'Terrer Lab',
+    'home.about.description': 'The focus of the Terrer Lab is terrestrial ecosystem ecology. We study how climate change and anthropogenic activities affect ecosystems, and, conversely, how ecosystem dynamics modulate climate change. We synthesize large datasets of field observations and remote sensing data using meta-analysis, machine learning, and other statistical methods to better understand the global functioning of terrestrial ecosystems.',
+    'home.research.title': 'Research Themes',
+    'home.research.subtitle': 'OUR INTERSECTED STUDIES',
+    'home.bigQuestions.title': 'Our Big Questions',
+    'home.bigQuestions.subtitle': 'RESEARCH INTERESTS',
+    'home.bigQuestions.q1': 'How much carbon can we recapture in soils with cropland restoration?',
+    'home.bigQuestions.q2': 'What are the feedbacks that link biodiversity and carbon storage?',
+    'home.bigQuestions.q3': 'How much nitrogen can plants absorb from the soil yearly?',
+    'home.bigQuestions.q4': 'Has climate change helped sequestering soil carbon?',
+    'home.bigQuestions.q5': 'How do changes in vegetation dynamics affect biophysical properties in terrestrial ecosystems?',
+    'home.bigQuestions.q6': 'How do the increasing extreme storms affect the terrestrial carbon cycle?',
+    'home.bigQuestions.q7': 'What is the impact of nutrient limitation on the terrestrial carbon sink?',
+    'home.bigQuestions.q8': 'What is the contribution of peatlands to the global carbon cycle?',
+
+    // Research Themes
+    'research.terrestrialCarbon.title': 'Terrestrial Carbon Ecology',
+    'research.terrestrialCarbon.description': 'We advance knowledge about the ecological dynamics impacting terrestrial carbon storage in a climate change context (e.g., elevated CO₂, warming, fire, extreme weather, nitrogen deposition). The primary goals are to unravel the mechanisms of the terrestrial carbon sink, and to reduce key uncertainties about the sink in climate models.',
+    'research.naturalClimate.title': 'Natural Climate Solutions',
+    'research.naturalClimate.description': 'We develop data-driven estimates of the mitigation potential of natural climate solutions. By synthesizing data collected by satellites and from published field studies, we seek to reduce spatial and temporal uncertainties about the effectiveness of soil- and forest-based pathways.',
+
+    // Research Page
+    'research.title': 'Research',
+    'research.subtitle': 'Our research focuses on understanding how terrestrial ecosystems respond to global change',
+
+    // Publications Page
+    'publications.title': 'Publications',
+    'publications.subtitle': 'Explore our published research and scientific contributions',
+
+    // People Page
+    'people.title': 'Lab Members',
+    'people.subtitle': 'Meet our team of researchers and students',
+    'people.principalInvestigator': 'Principal Investigator',
+    'people.phdStudents': 'PhD Students',
+    'people.masterStudents': 'Master Students',
+    'people.researchAssistants': 'Research Assistants',
+
+    // News Page
+    'news.title': 'News',
+    'news.subtitle': 'Take a look at the latest updates from the Terrer Lab',
+    'news.latestNews': 'Latest News',
+
+    // Climate Snacks Page
+    'climateSnacks.title': 'Climate Snacks',
+    'climateSnacks.subtitle': 'Climate Snacks are accessible conversations about climate change',
+    'climateSnacks.description': 'Our goal is to attract a wide audience, including curious non-academics, academics from other disciplines, and specialists. You can see the previous sessions recordings here:',
+
+    // Common
+    'common.readMore': 'Read More',
+    'common.viewAll': 'View All',
+    'common.backToTop': 'Back to Top',
+
+    // Footer
+    'footer.copyright': '© 2024 Terrer Lab. All rights reserved.',
+    'footer.contact': 'Contact',
+    'footer.location': 'Location',
+  },
+  KO: {
+    // Navigation
+    'nav.home': '홈',
+    'nav.research': '연구',
+    'nav.publications': '출판물',
+    'nav.people': '구성원',
+    'nav.news': '뉴스',
+    'nav.ourTeam': '연구팀',
+    'nav.joinUs': '참여하기',
+    'nav.newsUpdates': '뉴스 및 업데이트',
+    'nav.climateSnacks': '기후 스낵',
+
+    // Home Page - Hero
+    'home.hero.subtitle': 'TERRER LAB | MIT 토목환경공학과',
+    'home.hero.title': '지속 가능한 미래를 위한 생태학적 이해',
+    'home.hero.description': '현장 및 위성 데이터를 활용하여 육상 탄소 순환에 대한 지식을 발전시킵니다.',
+    // Home Page - About
+    'home.about.title': 'Terrer Lab',
+    'home.about.description': 'Terrer Lab은 육상 생태계 생태학에 초점을 맞추고 있습니다. 우리는 기후 변화와 인간 활동이 생태계에 어떤 영향을 미치는지, 그리고 반대로 생태계 역학이 기후 변화를 어떻게 조절하는지 연구합니다. 메타 분석, 머신 러닝 및 기타 통계적 방법을 사용하여 현장 관측과 원격 탐사 데이터의 대규모 데이터셋을 종합하여 육상 생태계의 전지구적 기능을 더 잘 이해하고자 합니다.',
+    'home.research.title': '연구 주제',
+    'home.research.subtitle': '우리의 교차 연구',
+    'home.bigQuestions.title': '우리의 큰 질문들',
+    'home.bigQuestions.subtitle': '연구 관심사',
+    'home.bigQuestions.q1': '농경지 복원을 통해 토양에서 얼마나 많은 탄소를 재포집할 수 있을까?',
+    'home.bigQuestions.q2': '생물다양성과 탄소 저장을 연결하는 피드백은 무엇인가?',
+    'home.bigQuestions.q3': '식물이 토양에서 매년 얼마나 많은 질소를 흡수할 수 있을까?',
+    'home.bigQuestions.q4': '기후 변화가 토양 탄소 격리에 도움이 되었을까?',
+    'home.bigQuestions.q5': '식생 역학의 변화가 육상 생태계의 생물물리학적 특성에 어떤 영향을 미치는가?',
+    'home.bigQuestions.q6': '증가하는 극한 폭풍이 육상 탄소 순환에 어떤 영향을 미치는가?',
+    'home.bigQuestions.q7': '영양분 제한이 육상 탄소 흡수원에 미치는 영향은 무엇인가?',
+    'home.bigQuestions.q8': '이탄지가 전지구적 탄소 순환에 기여하는 바는 무엇인가?',
+
+    // Research Themes
+    'research.terrestrialCarbon.title': '육상 탄소 생태학',
+    'research.terrestrialCarbon.description': '기후 변화 맥락(예: CO₂ 증가, 온난화, 화재, 극한 기상, 질소 침적)에서 육상 탄소 저장에 영향을 미치는 생태학적 역학에 대한 지식을 발전시킵니다. 주요 목표는 육상 탄소 흡수원의 메커니즘을 규명하고 기후 모델에서 흡수원에 대한 주요 불확실성을 줄이는 것입니다.',
+    'research.naturalClimate.title': '자연 기후 솔루션',
+    'research.naturalClimate.description': '자연 기후 솔루션의 완화 잠재력에 대한 데이터 기반 추정치를 개발합니다. 위성에서 수집한 데이터와 출판된 현장 연구를 종합하여 토양 및 산림 기반 경로의 효과에 대한 공간적, 시간적 불확실성을 줄이고자 합니다.',
+
+    // Research Page
+    'research.title': '연구',
+    'research.subtitle': '육상 생태계가 전지구적 변화에 어떻게 반응하는지 이해하는 연구를 수행합니다',
+
+    // Publications Page
+    'publications.title': '출판물',
+    'publications.subtitle': '출판된 연구 및 과학적 기여를 살펴보세요',
+
+    // People Page
+    'people.title': '연구실 구성원',
+    'people.subtitle': '연구원과 학생들을 소개합니다',
+    'people.principalInvestigator': '책임 연구원',
+    'people.phdStudents': '박사과정',
+    'people.masterStudents': '석사과정',
+    'people.researchAssistants': '연구 조교',
+
+    // News Page
+    'news.title': '뉴스',
+    'news.subtitle': 'Terrer Lab의 최신 소식을 확인하세요',
+    'news.latestNews': '최신 뉴스',
+
+    // Climate Snacks Page
+    'climateSnacks.title': '기후 스낵',
+    'climateSnacks.subtitle': '기후 스낵은 기후 변화에 대한 접근하기 쉬운 대화입니다',
+    'climateSnacks.description': '우리의 목표는 호기심 많은 비전문가, 다른 분야의 학자, 전문가를 포함한 폭넓은 청중을 끌어들이는 것입니다. 이전 세션 녹화본은 여기에서 볼 수 있습니다:',
+
+    // Common
+    'common.readMore': '더 보기',
+    'common.viewAll': '전체 보기',
+    'common.backToTop': '맨 위로',
+
+    // Footer
+    'footer.copyright': '© 2024 Terrer Lab. All rights reserved.',
+    'footer.contact': '연락처',
+    'footer.location': '위치',
+  },
+};
+
+interface LanguageProviderProps {
+  children: ReactNode;
+}
+
+export function LanguageProvider({ children }: LanguageProviderProps) {
+  const [language, setLanguageState] = useState<Language>(() => {
+    // localStorage에서 저장된 언어 불러오기
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('language') as Language;
+      if (saved === 'EN' || saved === 'KO') {
+        return saved;
+      }
+    }
+    return 'EN';
+  });
+
+  const setLanguage = useCallback((lang: Language) => {
+    setLanguageState(lang);
+    localStorage.setItem('language', lang);
+  }, []);
+
+  const t = useCallback((key: string): string => {
+    return translations[language][key] || key;
+  }, [language]);
+
+  return (
+    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+      {children}
+    </LanguageContext.Provider>
+  );
+}
+
+export function useLanguage() {
+  const context = useContext(LanguageContext);
+  if (context === undefined) {
+    throw new Error('useLanguage must be used within a LanguageProvider');
+  }
+  return context;
+}

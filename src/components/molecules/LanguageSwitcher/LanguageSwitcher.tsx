@@ -5,12 +5,11 @@ import { Icon } from '@/components/atoms/Icon';
 import { Text } from '@/components/atoms/Text';
 import { cn } from '@/utils/cn';
 import { dropdownMenu } from '@/utils/animations';
+import { useLanguage, type Language } from '@/contexts/LanguageContext';
 
 export interface LanguageSwitcherProps {
   className?: string;
 }
-
-type Language = 'EN' | 'KO';
 
 const languages: { code: Language; label: string }[] = [
   { code: 'EN', label: 'English' },
@@ -18,7 +17,7 @@ const languages: { code: Language; label: string }[] = [
 ];
 
 export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
-  const [currentLang, setCurrentLang] = useState<Language>('EN');
+  const { language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -34,9 +33,8 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
   }, []);
 
   const handleLanguageChange = (lang: Language) => {
-    setCurrentLang(lang);
+    setLanguage(lang);
     setIsOpen(false);
-    // TODO: 실제 언어 변경 로직 구현
   };
 
   return (
@@ -53,7 +51,7 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
         disableAnimation
       >
         <Text size="sm" weight={500}>
-          {currentLang === 'EN' ? 'English' : 'Korean'}
+          {language === 'EN' ? 'English' : 'Korean'}
         </Text>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
@@ -79,7 +77,7 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
                 onClick={() => handleLanguageChange(lang.code)}
                 className={cn(
                   'flex items-center w-full h-[48px] hover:bg-[#f5f5f5] transition-colors border-b border-gray-100 last:border-b-0',
-                  currentLang === lang.code && 'bg-[#f5f5f5]'
+                  language === lang.code && 'bg-[#f5f5f5]'
                 )}
                 style={{ paddingLeft: '20px' }}
               >

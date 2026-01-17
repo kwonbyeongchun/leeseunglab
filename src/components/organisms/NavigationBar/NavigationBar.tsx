@@ -7,7 +7,7 @@ import { LanguageSwitcher } from '@/components/molecules/LanguageSwitcher';
 import { Container } from '@/components/atoms/Container';
 import { Text } from '@/components/atoms/Text';
 import { cn } from '@/utils/cn';
-import { mainNavItems, peopleDropdownItems, newsDropdownItems } from '@/data/navigation';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export interface NavigationBarProps {
   className?: string;
@@ -15,6 +15,22 @@ export interface NavigationBarProps {
 
 export function NavigationBar({ className }: NavigationBarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
+
+  const mainNavItems = [
+    { label: t('nav.home'), href: '/' },
+    { label: t('nav.publications'), href: '/publications' },
+  ];
+
+  const peopleDropdownItems = [
+    { label: t('nav.ourTeam'), href: '/team' },
+    { label: t('nav.joinUs'), href: '/join-us' },
+  ];
+
+  const newsDropdownItems = [
+    { label: t('nav.newsUpdates'), href: '/news' },
+    { label: t('nav.climateSnacks'), href: '/climate-snacks' },
+  ];
 
   return (
     <header
@@ -55,12 +71,12 @@ export function NavigationBar({ className }: NavigationBarProps) {
           ))}
 
           <DropdownMenu
-            label="People"
+            label={t('nav.people')}
             items={peopleDropdownItems}
           />
 
           <DropdownMenu
-            label="News"
+            label={t('nav.news')}
             items={newsDropdownItems}
           />
 
@@ -95,7 +111,7 @@ export function NavigationBar({ className }: NavigationBarProps) {
             />
           ))}
           <div className="border-t border-[var(--color-border)] pt-2 mt-2">
-            <Text size="sm" color="muted" className="mb-2">People</Text>
+            <Text size="sm" color="muted" className="mb-2">{t('nav.people')}</Text>
             {peopleDropdownItems.map((item) => (
               <NavLink
                 key={item.href}
@@ -106,7 +122,7 @@ export function NavigationBar({ className }: NavigationBarProps) {
             ))}
           </div>
           <div className="border-t border-[var(--color-border)] pt-2 mt-2">
-            <Text size="sm" color="muted" className="mb-2">News</Text>
+            <Text size="sm" color="muted" className="mb-2">{t('nav.news')}</Text>
             {newsDropdownItems.map((item) => (
               <NavLink
                 key={item.href}

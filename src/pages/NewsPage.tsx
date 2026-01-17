@@ -3,6 +3,7 @@ import { ContentSection } from '@/components/templates/ContentSection';
 import { Container } from '@/components/atoms/Container';
 import { DecoratedSectionHeader } from '@/components/organisms/DecoratedSectionHeader';
 import { NewsCard } from '@/components/molecules/NewsCard';
+import { useLanguage } from '@/contexts/LanguageContext';
 import type { NewsItemData } from '@/types';
 
 // News data from original terrerlab.com
@@ -26,17 +27,19 @@ const newsItems: NewsItemData[] = [
 ];
 
 export function NewsPage() {
+  const { t } = useLanguage();
+
   return (
     <DetailPageLayout
-      title="News"
-      subtitle="Take a look at the latest updates from the Terrer Lab"
+      title={t('news.title')}
+      subtitle={t('news.subtitle')}
       heroImage="/leeseunglab/images/terrerlab/hero-background.jpg"
       heroHeight={830}
     >
       {/* Latest News Header */}
       <ContentSection background="white" padding="lg" style={{ paddingTop: 100, paddingBottom: 100 }}>
         <Container maxWidth="none" className="max-w-[840px]">
-          <DecoratedSectionHeader title="Latest News" subtitle="TERRER LAB" />
+          <DecoratedSectionHeader title={t('news.latestNews')} subtitle="TERRER LAB" />
         </Container>
       </ContentSection>
 

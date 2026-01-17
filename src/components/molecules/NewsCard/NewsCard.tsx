@@ -38,7 +38,7 @@ export function NewsCard({
               height: '100%',
               objectFit: 'cover',
               borderRadius: 8,
-              border: '1px solid #e5e5e5',
+              border: '1px solid black',
               imageRendering: 'auto',
               WebkitBackfaceVisibility: 'hidden',
               backfaceVisibility: 'hidden',
