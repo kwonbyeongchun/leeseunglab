@@ -46,7 +46,7 @@ export function HeroContent({
           color="white"
           uppercase
           letterSpacing="wider"
-          className="opacity-90 font-semibold"
+          className="font-semibold"
         >
           {subtitle}
         </Span>
@@ -55,7 +55,7 @@ export function HeroContent({
       <Spacer size="md" />
 
       <motion.div variants={heroTitle}>
-        <Heading level={1} color="white" className="max-w-4xl">
+        <Heading level={1} color="white" className="max-w-4xl text-3xl md:text-4xl text-white">
           {title}
         </Heading>
       </motion.div>
