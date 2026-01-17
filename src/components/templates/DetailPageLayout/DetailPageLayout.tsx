@@ -8,6 +8,7 @@ export interface DetailPageLayoutProps {
   subtitle?: string;
   heroImage?: string;
   heroHeight?: number;
+  noHeroImage?: boolean;
   backLink?: {
     href: string;
     label: string;
@@ -21,6 +22,7 @@ export function DetailPageLayout({
   subtitle,
   heroImage,
   heroHeight,
+  noHeroImage,
   backLink,
   className,
 }: DetailPageLayoutProps) {
@@ -30,7 +32,7 @@ export function DetailPageLayout({
         variant="subpage"
         title={title}
         subtitle={subtitle}
-        backgroundImage={heroImage || '/images/terrerlab/hero-background.jpg'}
+        backgroundImage={noHeroImage ? undefined : (heroImage || '/images/terrerlab/hero-background.jpg')}
         height={heroHeight}
         backLink={backLink}
       />

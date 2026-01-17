@@ -2,7 +2,6 @@ import type { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { BackgroundImage } from '@/components/atoms/BackgroundImage';
 import { Overlay } from '@/components/atoms/Overlay';
-import { Container } from '@/components/atoms/Container';
 import { HeroContent } from '@/components/organisms/HeroContent';
 import { ScrollIndicator } from '@/components/molecules/ScrollIndicator';
 import { Heading } from '@/components/atoms/Heading';
@@ -13,7 +12,7 @@ import { Icon } from '@/components/atoms/Icon';
 import { cn } from '@/utils/cn';
 
 export interface HeroSectionProps {
-  backgroundImage: string;
+  backgroundImage?: string;
   title: string;
   subtitle?: string;
   description?: string;
@@ -53,21 +52,29 @@ export function HeroSection({
 
   // Subpage variant
   if (variant === 'subpage') {
+    const hasBackgroundImage = !!backgroundImage;
+
     return (
       <section
         className={cn('relative overflow-hidden', className)}
         style={{
-          height: height || 450,
-          minHeight: height || 450,
+          height: hasBackgroundImage ? (height || 450) : 'auto',
+          minHeight: hasBackgroundImage ? (height || 450) : 'auto',
+          backgroundColor: hasBackgroundImage ? undefined : '#f8f8f8',
+          paddingTop: hasBackgroundImage ? undefined : 120,
+          paddingBottom: hasBackgroundImage ? undefined : 60,
         }}
       >
-        <BackgroundImage
-          src={backgroundImage}
-          className="absolute inset-0 w-full h-full"
-          size="cover"
-        />
-
-        <Overlay opacity={overlayOpacity} />
+        {hasBackgroundImage && (
+          <>
+            <BackgroundImage
+              src={backgroundImage}
+              className="absolute inset-0 w-full h-full"
+              size="cover"
+            />
+            <Overlay opacity={overlayOpacity} />
+          </>
+        )}
 
         <div className="relative z-10 h-full flex flex-col justify-center" style={{ marginLeft: 'calc(100vw / 6)' }}>
           {backLink && (
@@ -93,7 +100,14 @@ export function HeroSection({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Heading level={1} color="white" className="text-[1.2rem] md:text-[2.1rem]">
+            <Heading
+              level={1}
+              color={hasBackgroundImage ? 'white' : 'text'}
+              className={cn(
+                'text-[1.2rem] md:text-[2.1rem]',
+                !hasBackgroundImage && 'text-[#00380A]'
+              )}
+            >
               {title}
             </Heading>
 
@@ -102,8 +116,8 @@ export function HeroSection({
                 <Spacer size="md" />
                 <Span
                   size="xl"
-                  color="white"
-                  className="opacity-90"
+                  color={hasBackgroundImage ? 'white' : 'light'}
+                  className={hasBackgroundImage ? 'opacity-90' : 'text-[#444]'}
                 >
                   {subtitle}
                 </Span>
@@ -124,13 +138,16 @@ export function HeroSection({
         className
       )}
     >
-      <BackgroundImage
-        src={backgroundImage}
-        className="absolute inset-0 w-full h-full"
-        size="cover"
-      />
-
-      <Overlay opacity={overlayOpacity} />
+      {backgroundImage && (
+        <>
+          <BackgroundImage
+            src={backgroundImage}
+            className="absolute inset-0 w-full h-full"
+            size="cover"
+          />
+          <Overlay opacity={overlayOpacity} />
+        </>
+      )}
 
       <div
         className="relative z-10"
