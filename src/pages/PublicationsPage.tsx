@@ -83,7 +83,8 @@ export function PublicationsPage() {
   return (
     <DetailPageLayout
       title="Publications"
-      subtitle="Our research contributions to advancing understanding of terrestrial carbon dynamics."
+      subtitle="Terrer Lab | Climate + Ecology"
+      heroImage="/images/terrerlab/publications-hero.jpg"
     >
       {/* Year Filter */}
       <ContentSection background="white" padding="md">
