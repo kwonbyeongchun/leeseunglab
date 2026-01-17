@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ReactNode, CSSProperties } from 'react';
 import { motion } from 'framer-motion';
 import { Container } from '@/components/atoms/Container';
 import { SectionTitle } from '@/components/molecules/SectionTitle';
@@ -14,6 +14,7 @@ export interface ContentSectionProps {
   background?: 'white' | 'light' | 'dark' | 'primary';
   padding?: 'sm' | 'md' | 'lg' | 'xl';
   className?: string;
+  style?: CSSProperties;
   animate?: boolean;
 }
 
@@ -25,6 +26,7 @@ export function ContentSection({
   background = 'white',
   padding = 'lg',
   className,
+  style,
   animate = true,
 }: ContentSectionProps) {
   const backgroundClasses = {
@@ -84,6 +86,7 @@ export function ContentSection({
           paddingClasses[padding],
           className
         )}
+        style={style}
       >
         <Container maxWidth="xl">{content}</Container>
       </motion.section>
@@ -98,6 +101,7 @@ export function ContentSection({
         paddingClasses[padding],
         className
       )}
+      style={style}
     >
       <Container maxWidth="xl">{content}</Container>
     </section>

@@ -5,53 +5,39 @@ import { NewsItem } from '@/components/organisms/NewsItem';
 import { Paragraph } from '@/components/atoms/Paragraph';
 import type { NewsItemData } from '@/types';
 
-// Sample news data
+// News data from original terrerlab.com
 const newsItems: NewsItemData[] = [
   {
     id: '1',
-    title: 'New Nature Paper on Forest Carbon Storage',
-    date: '2024-01-15',
-    excerpt: 'Our latest research reveals new insights into how forests store carbon under changing climate conditions.',
-    image: '/images/terrerlab/653e68e5acd2104c5fe71745_1.jpg',
-    href: '/news/nature-paper-2024',
+    title: 'Congrats graduates!',
+    date: 'May 2024',
+    excerpt: 'Congratulations to Sydney and Jenna for graduating from the MEng program.',
+    image: 'https://cdn.prod.website-files.com/651cf640a849b854a8f6617b/6659e8989285cd66d79b98b7_IMG_0508.jpeg',
+    href: '/news/congrats-graduates',
   },
   {
     id: '2',
-    title: 'César Terrer Receives Research Award',
-    date: '2024-01-10',
-    excerpt: 'Dr. César Terrer has been recognized for his outstanding contributions to climate science research.',
-    image: '/images/terrerlab/653e693d87d06c306e0cac92_2.jpg',
-    href: '/news/research-award',
+    title: 'Evan participates in MCSC panel',
+    date: 'November 2023',
+    excerpt: 'Researcher Evan participated as a panelist in the "Biodiversity Metrics" session at the MIT Climate and Sustainability Consortium Annual Meeting.',
+    image: 'https://cdn.prod.website-files.com/651cf640a849b854a8f6617b/65696211f04fb39f72d083ff_EVAN_TL.png',
+    href: '/news/mcsc-panel',
   },
   {
     id: '3',
-    title: 'New PhD Students Join the Lab',
-    date: '2023-12-20',
-    excerpt: 'We welcome three new PhD students to the Terrer Lab this semester.',
+    title: 'New lab members join the team',
+    date: 'September 2023',
+    excerpt: 'We welcome new graduate students and researchers to the Terrer Lab.',
     image: '/images/terrerlab/65538c95d24377262e6a84ef_jason-goodman-Oalh2MojUuk-unsplash.jpg',
-    href: '/news/new-phd-students',
+    href: '/news/new-members',
   },
   {
     id: '4',
-    title: 'MIT Climate Symposium Presentation',
-    date: '2023-12-05',
-    excerpt: 'Lab members presented their research at the annual MIT Climate Symposium.',
-    href: '/news/mit-symposium',
-  },
-  {
-    id: '5',
-    title: 'Collaboration with Stanford University',
-    date: '2023-11-20',
-    excerpt: 'New research collaboration announced with Stanford Earth Sciences.',
-    href: '/news/stanford-collaboration',
-  },
-  {
-    id: '6',
-    title: 'Publication in Nature Climate Change',
-    date: '2023-11-10',
-    excerpt: 'Our analysis of nutrient limitations on global carbon uptake published.',
-    image: '/images/terrerlab/653e693de9279c39048540c7_3.jpg',
-    href: '/news/ncc-publication',
+    title: 'Publication in Nature',
+    date: 'August 2023',
+    excerpt: 'Our latest research on ecosystem carbon dynamics published in Nature.',
+    image: '/images/terrerlab/653e68e5acd2104c5fe71745_1.jpg',
+    href: '/news/nature-publication',
   },
 ];
 
@@ -61,7 +47,7 @@ export function NewsPage() {
 
   return (
     <DetailPageLayout
-      title="News"
+      title="News & Events"
       subtitle="Stay updated with the latest news and announcements from the Terrer Lab."
     >
       {/* Featured News */}

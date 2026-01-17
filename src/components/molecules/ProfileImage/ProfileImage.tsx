@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import { Image } from '@/components/atoms/Image';
 import { cn } from '@/utils/cn';
 
@@ -7,6 +8,7 @@ export interface ProfileImageProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   shape?: 'circle' | 'square' | 'rounded';
   className?: string;
+  style?: CSSProperties;
 }
 
 const sizeClasses = {
@@ -28,6 +30,7 @@ export function ProfileImage({
   size = 'md',
   shape = 'circle',
   className,
+  style,
 }: ProfileImageProps) {
   return (
     <div
@@ -37,6 +40,7 @@ export function ProfileImage({
         shapeClasses[shape],
         className
       )}
+      style={style}
     >
       <Image
         src={src}

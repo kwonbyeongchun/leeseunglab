@@ -6,7 +6,8 @@ import type { Size, SocialPlatform } from '@/types';
 export interface SocialIconProps {
   platform: SocialPlatform;
   href: string;
-  size?: Size;
+  size?: Size | number;
+  strokeWidth?: number;
   className?: string;
 }
 
@@ -30,6 +31,7 @@ export function SocialIcon({
   platform,
   href,
   size = 'md',
+  strokeWidth,
   className,
 }: SocialIconProps) {
   const iconName = platformIcons[platform];
@@ -47,7 +49,7 @@ export function SocialIcon({
         className
       )}
     >
-      <Icon name={iconName} size={size} />
+      <Icon name={iconName} size={size} strokeWidth={strokeWidth} />
     </Link>
   );
 }

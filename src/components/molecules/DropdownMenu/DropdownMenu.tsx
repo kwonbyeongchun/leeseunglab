@@ -34,10 +34,14 @@ export function DropdownMenu({
   }, []);
 
   return (
-    <div ref={dropdownRef} className={cn('relative', className)}>
+    <div
+      ref={dropdownRef}
+      className={cn('relative', className)}
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
       <Button
         variant="ghost"
-        onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-1"
         style={{ padding: '20px 4px' }}
         disableAnimation
@@ -60,16 +64,18 @@ export function DropdownMenu({
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="absolute top-full left-0 mt-1 min-w-[180px] bg-white rounded-md shadow-lg py-2 z-50"
+            className="absolute top-full left-0 min-w-[200px] bg-white border border-gray-200 shadow-sm z-50"
+            style={{ marginTop: 0 }}
           >
             {items.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="block px-4 py-2 hover:bg-gray-50 transition-colors duration-[var(--transition-fast)]"
+                className="flex items-center h-[48px] hover:bg-[#f5f5f5] transition-colors border-b border-gray-100 last:border-b-0"
+                style={{ paddingLeft: '20px' }}
                 onClick={() => setIsOpen(false)}
               >
-                <Text size="sm" color="text">
+                <Text size="sm" color="text" className="font-normal">
                   {item.label}
                 </Text>
               </Link>

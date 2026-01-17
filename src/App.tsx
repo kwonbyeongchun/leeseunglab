@@ -9,6 +9,8 @@ import {
   BigQuestionsPage,
   BigQuestionDetailPage,
   ContactPage,
+  JoinUsPage,
+  ClimateSnacksPage,
 } from '@/pages';
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
         <Route path="/big-questions" element={<BigQuestionsPage />} />
         <Route path="/big-questions/:id" element={<BigQuestionDetailPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/join-us" element={<JoinUsPage />} />
+        <Route path="/climate-snacks" element={<ClimateSnacksPage />} />
       </Routes>
     </AnimatePresence>
   );

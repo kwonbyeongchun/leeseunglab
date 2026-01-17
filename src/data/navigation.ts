@@ -8,10 +8,10 @@ export const mainNavItems: NavItem[] = [
 
 export const peopleDropdownItems: NavItem[] = [
   { label: 'Our Team', href: '/team' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Join Us', href: '/join-us' },
 ];
 
 export const newsDropdownItems: NavItem[] = [
   { label: 'News & Updates', href: '/news' },
-  { label: 'Big Questions', href: '/big-questions' },
+  { label: 'Climate Snacks', href: '/climate-snacks' },
 ];

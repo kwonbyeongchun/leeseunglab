@@ -6,3 +6,5 @@ export { NewsPage } from './NewsPage';
 export { BigQuestionsPage } from './BigQuestionsPage';
 export { BigQuestionDetailPage } from './BigQuestionDetailPage';
 export { ContactPage } from './ContactPage';
+export { JoinUsPage } from './JoinUsPage';
+export { ClimateSnacksPage } from './ClimateSnacksPage';
