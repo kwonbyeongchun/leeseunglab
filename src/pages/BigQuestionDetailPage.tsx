@@ -5,9 +5,11 @@ import { BigQuestionContent } from '@/components/organisms/BigQuestionContent';
 import { Link } from '@/components/atoms/Link';
 import { Icon } from '@/components/atoms/Icon';
 import { bigQuestions } from '@/data/bigQuestions';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export function BigQuestionDetailPage() {
   const { id } = useParams<{ id: string }>();
+  const { t } = useLanguage();
 
   const question = bigQuestions.find(q => q.id === Number(id));
 
@@ -30,7 +32,7 @@ export function BigQuestionDetailPage() {
           className="inline-flex items-center gap-2 hover:text-[var(--color-primary)]"
         >
           <Icon name="ArrowLeft" size={16} />
-          Back to Big Questions
+          {t('bigQuestions.backTo')}
         </Link>
       </ContentSection>
 

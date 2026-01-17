@@ -7,26 +7,7 @@ import { Link } from '@/components/atoms/Link';
 import { Icon } from '@/components/atoms/Icon';
 import { SocialIcon } from '@/components/molecules/SocialIcon';
 import { cn } from '@/utils/cn';
-
-const contactInfo = [
-  {
-    icon: 'MapPin' as const,
-    title: 'Address',
-    content: ['MIT Building 48-216', '77 Massachusetts Ave', 'Cambridge, MA 02139'],
-  },
-  {
-    icon: 'Mail' as const,
-    title: 'Email',
-    content: ['cterrer@mit.edu'],
-    isLink: true,
-    linkPrefix: 'mailto:',
-  },
-  {
-    icon: 'Phone' as const,
-    title: 'Phone',
-    content: ['+1 (617) 253-1000'],
-  },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const socialLinks = [
   { platform: 'twitter' as const, href: 'https://twitter.com/terrerlab', label: 'Twitter' },
@@ -35,10 +16,32 @@ const socialLinks = [
 ];
 
 export function ContactPage() {
+  const { t } = useLanguage();
+
+  const contactInfo = [
+    {
+      icon: 'MapPin' as const,
+      title: t('contact.address'),
+      content: ['MIT Building 48-216', '77 Massachusetts Ave', 'Cambridge, MA 02139'],
+    },
+    {
+      icon: 'Mail' as const,
+      title: t('contact.email'),
+      content: ['cterrer@mit.edu'],
+      isLink: true,
+      linkPrefix: 'mailto:',
+    },
+    {
+      icon: 'Phone' as const,
+      title: t('contact.phone'),
+      content: ['+1 (617) 253-1000'],
+    },
+  ];
+
   return (
     <DetailPageLayout
-      title="Contact Us"
-      subtitle="Get in touch with the Terrer Lab team."
+      title={t('contact.title')}
+      subtitle={t('contact.subtitle')}
     >
       {/* Contact Information */}
       <ContentSection background="white" padding="lg">
@@ -94,7 +97,7 @@ export function ContactPage() {
       <ContentSection background="light" padding="lg">
         <div className="text-center">
           <Heading level={3} color="text" className="mb-6">
-            Follow Us
+            {t('contact.followUs')}
           </Heading>
           <div className="flex items-center justify-center gap-6">
             {socialLinks.map((social) => (
@@ -117,7 +120,7 @@ export function ContactPage() {
       {/* Map Placeholder */}
       <ContentSection background="white" padding="lg">
         <Heading level={3} color="text" className="mb-6 text-center">
-          Our Location
+          {t('contact.ourLocation')}
         </Heading>
         <div className="aspect-video bg-[var(--color-background)] rounded-lg overflow-hidden">
           <iframe
@@ -137,18 +140,17 @@ export function ContactPage() {
       <ContentSection background="primary" padding="lg">
         <div className="text-center text-white">
           <Heading level={2} color="white" className="mb-4">
-            Join Our Team
+            {t('contact.joinTeam')}
           </Heading>
           <Paragraph color="white" size="lg" className="mb-6 opacity-90 max-w-2xl mx-auto">
-            We are always looking for talented researchers passionate about understanding
-            terrestrial carbon dynamics and natural climate solutions.
+            {t('contact.joinTeamDescription')}
           </Paragraph>
           <Link
             href="mailto:cterrer@mit.edu?subject=Interest%20in%20Joining%20Terrer%20Lab"
             variant="white"
             className="inline-flex items-center gap-2 bg-white text-[var(--color-primary)] px-6 py-3 rounded-lg font-medium hover:bg-opacity-90 transition-all"
           >
-            Contact Us About Opportunities
+            {t('contact.contactOpportunities')}
             <Icon name="ArrowRight" size={16} />
           </Link>
         </div>

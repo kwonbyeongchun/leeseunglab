@@ -1,249 +1,50 @@
+/**
+ * 팀원 데이터 로더
+ * /content/team/ 폴더의 YAML 파일들을 로드합니다.
+ */
+
 import type { TeamMember } from '@/types';
 
-export const teamMembers: TeamMember[] = [
-  {
-    id: 'cesar-terrer',
-    name: 'César Terrer',
-    position: 'ASSISTANT PROFESSOR AT MIT CEE',
-    bio: 'He obtained his PhD in Ecosystem Ecology and Climate Change from Imperial College London, where he started working at the interface between experiments and models to better understand the effects of elevated CO2 on vegetation. Dr. Terrer\'s research has advanced our understanding on the effects of CO2 in terrestrial ecosystems, the role of soil nutrients in a climate change context, and plant-soil interactions.',
-    image: '/images/terrerlab/652da6c7cb5936d4aebfc780_terrer.jpeg',
-    scholarUrl: 'https://scholar.google.com/citations?user=HKJBpMAAAAAJ&hl=en',
-    email: 'cterrer@mit.edu',
-    type: 'team',
-  },
-  {
-    id: 'evan-fricke',
-    name: 'Evan Fricke',
-    position: 'Research Scientist',
-    bio: 'He addresses linkages between the biodiversity and climate crises by modeling how animal biodiversity changes affect the functioning of plant communities. His background includes a PhD from the Department of Biology at the University of Washington.',
-    image: '/images/terrerlab/670ff97211bbbac701ce83c7_pic_avatar_original_1_1_optimized_4000.png',
-    scholarUrl: 'https://scholar.google.com/citations?hl=en&user=nNoGtVQAAAAJ',
-    email: 'efricke@mit.edu',
-    type: 'team',
-  },
-  {
-    id: 'diego-grados',
-    name: 'Diego Grados',
-    position: 'POSTDOC FELLOW',
-    bio: 'Diego is a bioscience engineer, agroecologist, and applied statistician dedicated to addressing sustainable development challenges in agriculture. He earned his PhD from KU Leuven in Belgium.',
-    image: '/images/terrerlab/651e90b2d966b69fb44ef834_Screenshot%202023-10-05%20155402.png',
-    scholarUrl: 'https://scholar.google.com/citations?hl=en&user=78kPWSAAAAAJ&view_op=list_works',
-    email: 'diegogb@mit.edu',
-    type: 'team',
-  },
-  {
-    id: 'leila-mirzagholi',
-    name: 'Leila Mirzagholi',
-    position: 'POSTDOC FELLOW',
-    bio: 'Leila is a multidisciplinary scientist with a foundation in theoretical physics and mathematics. She earned her Ph.D. from the Max Planck Institute for Astrophysics in Munich.',
-    image: '/images/terrerlab/6553b5e1cacaf05a3add70b7_leila.png',
-    scholarUrl: 'https://scholar.google.com/citations?user=-sn_ThQAAAAJ&hl=en',
-    email: 'lmirz@mit.edu',
-    type: 'team',
-  },
-  {
-    id: 'na-chen',
-    name: 'Na Chen',
-    position: 'Postdoc Fellow',
-    bio: 'Na Chen received a PhD in Remote Sensing from Wageningen University, the Netherlands. Her research focuses on tropical forest disturbance and regrowth using earth observation sources.',
-    image: '/images/terrerlab/65c511f3301a8a1a044bad15_nachen_photo.jpg',
-    scholarUrl: 'https://scholar.google.com/citations?user=VIiFpBsAAAAJ&hl=en',
-    email: 'nachen@mit.edu',
-    type: 'team',
-  },
-  {
-    id: 'sara-cerasoli',
-    name: 'Sara Cerasoli',
-    position: 'Postdoc Fellow',
-    bio: 'Sara obtained her Ph.D. in Civil and Environmental Engineering from Princeton University. Her research lies at the intersection of environmental challenges, focusing on natural climate solutions and water management.',
-    image: '/images/terrerlab/66e7041da5b87f5b70d2e3b2_sara.jpeg',
-    scholarUrl: 'https://scholar.google.com/citations?user=-D4R7rQAAAAJ&hl=en',
-    email: 'cerasoli@mit.edu',
-    type: 'team',
-  },
-  {
-    id: 'shuai-ren',
-    name: 'Shuai Ren',
-    position: 'Postdoc Fellow',
-    bio: 'Shuai Ren received his PhD degree in soil carbon science from Institute of Tibetan Plateau Research, Chinese Academy of Sciences.',
-    image: '/images/terrerlab/6697c08dc9af8e1ec650e758_renshuai-photo.jpg',
-    scholarUrl: 'https://scholar.google.com/citations?user=gVHqJNMAAAAJ&hl=en&oi=ao',
-    email: 'shuairen707@gmail.com',
-    type: 'team',
-  },
-  {
-    id: 'yanlei-feng',
-    name: 'Yanlei Feng',
-    position: 'Postdoc Fellow',
-    bio: 'She obtained her PhD in earth system science from UC Berkeley. Her research focuses on land-atmosphere coupling under changing climate.',
-    image: '/images/terrerlab/6553b86b78753ae6cd215ccc_yanlei.png',
-    scholarUrl: 'https://scholar.google.com/citations?hl=en&user=kgPDwmIAAAAJ',
-    email: 'yanleif@mit.edu',
-    type: 'team',
-  },
-  {
-    id: 'jevan-yu',
-    name: 'Jevan Yu',
-    position: 'PhD Student',
-    bio: 'Jevan\'s research focuses on the role of water in the global carbon cycle, particularly investigating peatlands.',
-    image: '/images/terrerlab/6553b5e38c553a6a5606cfae_yu.png',
-    email: 'jevan@mit.edu',
-    type: 'team',
-  },
-  {
-    id: 'maria-macfarlane',
-    name: 'Maria E. Macfarlane',
-    position: 'PhD Student',
-    bio: 'Maria received a Master\'s degree in Environmental Sciences from ETH Zurich. Her research focuses on soil organic carbon saturation.',
-    image: '/images/terrerlab/6553b7710ec1253b222c81c3_maria.jpeg',
-    email: 'mariaem@mit.edu',
-    type: 'team',
-  },
-  {
-    id: 'ruofei-jia',
-    name: 'Ruofei Jia',
-    position: 'PhD Student',
-    bio: 'She studies the global carbon cycle in the context of climate change, focusing on plant-soil interactions.',
-    image: '/images/terrerlab/651e90b1caa28de325440716_Screenshot%202023-10-05%20155334.png',
-    email: 'rfjia@mit.edu',
-    type: 'team',
-  },
-  {
-    id: 'trevor-cambron',
-    name: 'Trevor Cambron',
-    position: 'PhD Student',
-    bio: 'His research focuses on forest responses to global change and implications on the terrestrial carbon sink.',
-    image: '/images/terrerlab/6553b7cacacaf05a3adebefa_trevor.png',
-    email: 'tcambron@mit.edu',
-    type: 'team',
-  },
-  {
-    id: 'viki-mancoridis',
-    name: 'Viki Mancoridis',
-    position: 'PhD Student',
-    bio: 'Viki is interested in studying land use changes and their impact on terrestrial ecosystems, with a focus on soil carbon and biodiversity. She graduated from Princeton University in May 2024 with a B.S.E. in Computer Science and a certificate in Statistics & Machine Learning.',
-    image: '/images/terrerlab/66e7041d4f137113dd657fdc_viki.jpeg',
-    email: 'vm8@mit.edu',
-    type: 'team',
-  },
-  {
-    id: 'yifeng-cui',
-    name: 'Yifeng Cui',
-    position: 'Visiting PhD Student',
-    bio: 'Yifeng is currently a visiting PhD student in the Terrer Lab. Before joining the lab, he was pursuing his PhD at the University of Chinese Academy of Sciences, specializing in agricultural land use and climate change. His research interests focus on the response of global agricultural land use practices, such as cropland management, as a critical component of nature-based solutions to mitigate climate change.',
-    image: '/images/terrerlab/66e7041d4f137113dd657fdc_viki.jpeg',
-    email: 'yifen223@mit.edu',
-    type: 'team',
-  },
-  {
-    id: 'clara-rong',
-    name: 'Clara Rong',
-    position: 'M.Eng Student',
-    bio: 'Clara\'s research interests lie at the intersection of policy, equity, and climate change mitigation. Her work at MIT focuses on characterizing carbon sequestration in agricultural land use as a nature-based solution to climate challenges. She received her B.S. in Civil and Environmental Engineering from UC Berkeley.',
-    image: '/images/terrerlab/66e7041d4f137113dd657fdc_viki.jpeg',
-    email: 'clara02@mit.edu',
-    type: 'team',
-  },
-  {
-    id: 'joy-domingo-kameenui',
-    name: 'Joy Domingo-Kameenui',
-    position: 'M.Eng Student',
-    bio: 'Joy is from Honolulu, Hawaii, and completed her B.S. in Civil and Environmental Engineering at MIT in May 2024. She is continuing at MIT for her M.Eng in the CEE Climate, Environment, and Sustainability track. She has done research on peatland carbon fluxes and affordable methods for farmers to measure soil respiration.',
-    image: '/images/terrerlab/66e7041d4f137113dd657fdc_viki.jpeg',
-    email: 'joydk@mit.edu',
-    type: 'team',
-  },
-  {
-    id: 'ming-chen',
-    name: 'Ming Chen',
-    position: 'M.Eng Student',
-    bio: 'Ming is interested in the biogeochemical cycle of carbon in natural environments. He graduated from Vanderbilt University with a B.A. in Earth & Environmental Sciences and Mathematics. Before joining the Terrer Lab, Ming did his research on seasonal stream metabolism variations in headwater streams.',
-    image: '/images/terrerlab/66e7041d4f137113dd657fdc_viki.jpeg',
-    email: 'chenm736@mit.edu',
-    type: 'team',
-  },
-];
+// YAML 파일 import
+import teamData from '@content/team/team.yaml';
+import alumniData from '@content/team/alumni.yaml';
 
-export const alumni: TeamMember[] = [
-  {
-    id: 'kathryn-wheeler',
-    name: 'Kathryn Wheeler',
-    position: 'Alumni',
-    bio: '',
-    image: '/images/terrerlab/651e91e15eb34ce36d51d29d_Screenshot%202023-10-05%20160617.png',
-    email: '',
-    type: 'alumni',
-  },
-  {
-    id: 'sydney-wickman',
-    name: 'Sydney Wickman',
-    position: 'Alumni',
-    bio: '',
-    image: '/images/terrerlab/6553b8dda814dd3ce6dc9752_syd.png',
-    email: '',
-    type: 'alumni',
-  },
-  {
-    id: 'jennifer-schug',
-    name: 'Jennifer Schug',
-    position: 'Alumni',
-    bio: '',
-    image: '/images/terrerlab/6553b5e3ca38d43095e9ec86_jen.png',
-    email: '',
-    type: 'alumni',
-  },
-  {
-    id: 'stephen-bell',
-    name: 'Stephen Bell',
-    position: 'Alumni',
-    bio: '',
-    image: '/images/terrerlab/652db446099e3f13d00ec0bd_ste.jpeg',
-    email: '',
-    type: 'alumni',
-  },
-  {
-    id: 'wenzhe-jiao',
-    name: 'Wenzhe Jiao',
-    position: 'Alumni',
-    bio: '',
-    image: '/images/terrerlab/652db44602275cf3496e5f79_wen.jpeg',
-    email: '',
-    type: 'alumni',
-  },
-  {
-    id: 'xiao-junlan',
-    name: 'Xiao Junlan',
-    position: 'Alumni',
-    bio: '',
-    image: '/images/terrerlab/65538c9491e6448b1f9467cb_annie-spratt-QckxruozjRg-unsplash.jpg',
-    email: '',
-    type: 'alumni',
-  },
-  {
-    id: 'zhao-zhang',
-    name: 'Zhao Zhang',
-    position: 'Alumni',
-    bio: '',
-    image: '/images/terrerlab/65538c9491e6448b1f9467cb_annie-spratt-QckxruozjRg-unsplash.jpg',
-    email: '',
-    type: 'alumni',
-  },
-  {
-    id: 'helena-vallicrosa',
-    name: 'Helena Vallicrosa',
-    position: 'Alumni',
-    bio: '',
-    image: '/images/terrerlab/65538c9491e6448b1f9467cb_annie-spratt-QckxruozjRg-unsplash.jpg',
-    email: '',
-    type: 'alumni',
-  },
-  {
-    id: 'alexandra-chua',
-    name: 'Alexandra Chua',
-    position: 'Alumni',
-    bio: '',
-    image: '/images/terrerlab/65538c9491e6448b1f9467cb_annie-spratt-QckxruozjRg-unsplash.jpg',
-    email: '',
-    type: 'alumni',
-  },
-];
+// YAML에서 로드된 데이터의 raw 타입
+interface RawTeamMember {
+  id: string;
+  name: string;
+  position: string;
+  bio: string;
+  image: string;
+  scholar_url?: string;
+  email: string;
+}
+
+// Raw 데이터를 TeamMember 타입으로 변환
+function transformTeamMembers(raw: RawTeamMember[], type: 'team' | 'alumni'): TeamMember[] {
+  return raw.map((member) => ({
+    id: member.id,
+    name: member.name,
+    position: member.position,
+    bio: member.bio,
+    image: member.image,
+    scholarUrl: member.scholar_url,
+    email: member.email,
+    type,
+  }));
+}
+
+// 현재 팀원 목록
+export const teamMembers: TeamMember[] = transformTeamMembers(
+  teamData as RawTeamMember[],
+  'team'
+);
+
+// 동문 목록
+export const alumni: TeamMember[] = transformTeamMembers(
+  alumniData as RawTeamMember[],
+  'alumni'
+);
+
+// 전체 멤버 (팀원 + 동문)
+export const allMembers: TeamMember[] = [...teamMembers, ...alumni];

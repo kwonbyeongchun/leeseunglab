@@ -1,14 +1,17 @@
 import { cn } from '@/utils/cn';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export interface BelongingStatementProps {
   className?: string;
 }
 
 export function BelongingStatement({ className }: BelongingStatementProps) {
+  const { t } = useLanguage();
+
   const statements = [
-    'We strive to foster belonging and empowerment.',
-    'We value the visible and invisible qualities that make you who you are.',
-    'We listen and engage with our diverse communities.',
+    t('joinUs.belonging1'),
+    t('joinUs.belonging2'),
+    t('joinUs.belonging3'),
   ];
 
   return (

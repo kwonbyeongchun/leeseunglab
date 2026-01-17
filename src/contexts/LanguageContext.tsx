@@ -53,6 +53,16 @@ const translations: Record<Language, Record<string, string>> = {
     // Research Page
     'research.title': 'Research',
     'research.subtitle': 'Our research focuses on understanding how terrestrial ecosystems respond to global change',
+    'research.intro': 'The Terrer Lab advances knowledge about the ecological dynamics impacting terrestrial carbon storage in a climate change context. We combine experimental data synthesis with modeling approaches to reduce key uncertainties about the terrestrial carbon sink.',
+    'research.themesTitle': 'Research Themes',
+    'research.bigQuestionsTitle': 'Big Questions',
+    'research.bigQuestionsSubtitle': 'The fundamental questions driving our research',
+
+    // Big Questions Page
+    'bigQuestions.title': 'Big Questions',
+    'bigQuestions.subtitle': 'The fundamental questions driving our research into terrestrial carbon dynamics.',
+    'bigQuestions.intro': 'Our research is driven by fundamental questions about how terrestrial ecosystems function and respond to global change. These "big questions" guide our investigations into carbon storage, nutrient cycling, and climate feedbacks.',
+    'bigQuestions.backTo': 'Back to Big Questions',
 
     // Publications Page
     'publications.title': 'Publications',
@@ -65,6 +75,33 @@ const translations: Record<Language, Record<string, string>> = {
     'people.phdStudents': 'PhD Students',
     'people.masterStudents': 'Master Students',
     'people.researchAssistants': 'Research Assistants',
+
+    // Team Page
+    'team.title': 'Meet the Terrer Lab',
+    'team.team': 'Team',
+    'team.alumni': 'Alumni',
+
+    // Join Us Page
+    'joinUs.title': 'Join Us',
+    'joinUs.subtitle': 'Be a part of the Terrer Lab at MIT',
+    'joinUs.values': 'VALUES',
+    'joinUs.valuesIntro': 'Inclusion in science starts by inclusion in the lab.',
+    'joinUs.valuesDescription': 'Climate change is a global challenge, but its impacts and solutions are different around the world. We believe diversity is a key factor to provide solutions to tackle this challenge worldwide. Thus, the Terrer Lab embrace diversity as a necessity and an advantage for our common goal.',
+    'joinUs.belonging1': 'We strive to foster belonging and empowerment.',
+    'joinUs.belonging2': 'We value the visible and invisible qualities that make you who you are.',
+    'joinUs.belonging3': 'We listen and engage with our diverse communities.',
+
+    // Contact Page
+    'contact.title': 'Contact Us',
+    'contact.subtitle': 'Get in touch with the Terrer Lab team.',
+    'contact.address': 'Address',
+    'contact.email': 'Email',
+    'contact.phone': 'Phone',
+    'contact.followUs': 'Follow Us',
+    'contact.ourLocation': 'Our Location',
+    'contact.joinTeam': 'Join Our Team',
+    'contact.joinTeamDescription': 'We are always looking for talented researchers passionate about understanding terrestrial carbon dynamics and natural climate solutions.',
+    'contact.contactOpportunities': 'Contact Us About Opportunities',
 
     // News Page
     'news.title': 'News',
@@ -80,6 +117,10 @@ const translations: Record<Language, Record<string, string>> = {
     'common.readMore': 'Read More',
     'common.viewAll': 'View All',
     'common.backToTop': 'Back to Top',
+
+    // Language
+    'language.english': 'English',
+    'language.korean': 'Korean',
 
     // Footer
     'footer.copyright': '© 2024 Terrer Lab. All rights reserved.',
@@ -127,6 +168,16 @@ const translations: Record<Language, Record<string, string>> = {
     // Research Page
     'research.title': '연구',
     'research.subtitle': '육상 생태계가 전지구적 변화에 어떻게 반응하는지 이해하는 연구를 수행합니다',
+    'research.intro': 'Terrer Lab은 기후 변화 맥락에서 육상 탄소 저장에 영향을 미치는 생태학적 역학에 대한 지식을 발전시킵니다. 실험 데이터 종합과 모델링 접근법을 결합하여 육상 탄소 흡수원에 대한 주요 불확실성을 줄입니다.',
+    'research.themesTitle': '연구 주제',
+    'research.bigQuestionsTitle': '큰 질문들',
+    'research.bigQuestionsSubtitle': '우리 연구를 이끄는 근본적인 질문들',
+
+    // Big Questions Page
+    'bigQuestions.title': '큰 질문들',
+    'bigQuestions.subtitle': '육상 탄소 역학에 대한 연구를 이끄는 근본적인 질문들.',
+    'bigQuestions.intro': '우리의 연구는 육상 생태계가 어떻게 기능하고 전지구적 변화에 어떻게 반응하는지에 대한 근본적인 질문에 의해 이끌립니다. 이러한 "큰 질문들"은 탄소 저장, 영양분 순환, 기후 피드백에 대한 우리의 조사를 안내합니다.',
+    'bigQuestions.backTo': '큰 질문들로 돌아가기',
 
     // Publications Page
     'publications.title': '출판물',
@@ -139,6 +190,33 @@ const translations: Record<Language, Record<string, string>> = {
     'people.phdStudents': '박사과정',
     'people.masterStudents': '석사과정',
     'people.researchAssistants': '연구 조교',
+
+    // Team Page
+    'team.title': 'Terrer Lab을 소개합니다',
+    'team.team': '팀',
+    'team.alumni': '졸업생',
+
+    // Join Us Page
+    'joinUs.title': '참여하기',
+    'joinUs.subtitle': 'MIT Terrer Lab의 일원이 되세요',
+    'joinUs.values': '가치',
+    'joinUs.valuesIntro': '과학에서의 포용은 연구실에서의 포용에서 시작됩니다.',
+    'joinUs.valuesDescription': '기후 변화는 전 세계적인 도전이지만, 그 영향과 해결책은 전 세계적으로 다릅니다. 우리는 다양성이 이 도전에 전 세계적으로 대응하기 위한 해결책을 제공하는 핵심 요소라고 믿습니다. 따라서 Terrer Lab은 다양성을 공동 목표를 위한 필수 요소이자 이점으로 받아들입니다.',
+    'joinUs.belonging1': '우리는 소속감과 역량 강화를 촉진하기 위해 노력합니다.',
+    'joinUs.belonging2': '우리는 당신을 당신답게 만드는 보이는 것과 보이지 않는 특성을 소중히 여깁니다.',
+    'joinUs.belonging3': '우리는 다양한 커뮤니티의 이야기를 듣고 함께합니다.',
+
+    // Contact Page
+    'contact.title': '연락처',
+    'contact.subtitle': 'Terrer Lab 팀에 연락하세요.',
+    'contact.address': '주소',
+    'contact.email': '이메일',
+    'contact.phone': '전화',
+    'contact.followUs': '팔로우하기',
+    'contact.ourLocation': '위치',
+    'contact.joinTeam': '팀에 합류하세요',
+    'contact.joinTeamDescription': '육상 탄소 역학과 자연 기후 솔루션을 이해하는 데 열정적인 재능 있는 연구원을 항상 찾고 있습니다.',
+    'contact.contactOpportunities': '기회에 대해 문의하기',
 
     // News Page
     'news.title': '뉴스',
@@ -154,6 +232,10 @@ const translations: Record<Language, Record<string, string>> = {
     'common.readMore': '더 보기',
     'common.viewAll': '전체 보기',
     'common.backToTop': '맨 위로',
+
+    // Language
+    'language.english': '영어',
+    'language.korean': '한국어',
 
     // Footer
     'footer.copyright': '© 2024 Terrer Lab. All rights reserved.',

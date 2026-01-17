@@ -6,34 +6,47 @@ import { BigQuestionCard } from '@/components/organisms/BigQuestionCard';
 import { Paragraph } from '@/components/atoms/Paragraph';
 import { researchThemes } from '@/data/researchThemes';
 import { bigQuestions } from '@/data/bigQuestions';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export function ResearchPage() {
+  const { t } = useLanguage();
+
+  // 번역된 연구 주제 데이터
+  const translatedResearchThemes = researchThemes.map((theme) => ({
+    ...theme,
+    title: t(`research.${theme.id === 'terrestrial-carbon' ? 'terrestrialCarbon' : 'naturalClimate'}.title`),
+    description: t(`research.${theme.id === 'terrestrial-carbon' ? 'terrestrialCarbon' : 'naturalClimate'}.description`),
+  }));
+
+  // 번역된 Big Questions 데이터
+  const translatedQuestions = bigQuestions.map((q, index) => ({
+    ...q,
+    question: t(`home.bigQuestions.q${index + 1}`),
+  }));
+
   return (
     <DetailPageLayout
-      title="Research"
-      subtitle="Our research focuses on understanding terrestrial carbon dynamics and developing natural climate solutions."
+      title={t('research.title')}
+      subtitle={t('research.subtitle')}
     >
       {/* Introduction */}
       <ContentSection background="white" padding="md">
         <div className="max-w-3xl">
           <Paragraph color="light" size="lg" className="leading-relaxed">
-            The Terrer Lab advances knowledge about the ecological dynamics impacting
-            terrestrial carbon storage in a climate change context. We combine experimental
-            data synthesis with modeling approaches to reduce key uncertainties about the
-            terrestrial carbon sink.
+            {t('research.intro')}
           </Paragraph>
         </div>
       </ContentSection>
 
       {/* Research Themes */}
       <GridSection
-        title="Research Themes"
+        title={t('research.themesTitle')}
         columns={2}
         gap="lg"
         background="light"
         padding="lg"
       >
-        {researchThemes.map((theme, index) => (
+        {translatedResearchThemes.map((theme, index) => (
           <ResearchThemeCard
             key={theme.id}
             {...theme}
@@ -44,14 +57,14 @@ export function ResearchPage() {
 
       {/* Big Questions */}
       <GridSection
-        title="Big Questions"
-        subtitle="The fundamental questions driving our research"
+        title={t('research.bigQuestionsTitle')}
+        subtitle={t('research.bigQuestionsSubtitle')}
         columns={2}
         gap="md"
         background="white"
         padding="lg"
       >
-        {bigQuestions.map((question, index) => (
+        {translatedQuestions.map((question, index) => (
           <BigQuestionCard
             key={question.id}
             {...question}

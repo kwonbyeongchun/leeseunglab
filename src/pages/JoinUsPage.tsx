@@ -6,12 +6,15 @@ import { TextBlock } from '@/components/atoms/TextBlock';
 import { JoinUsCallToAction } from '@/components/molecules/JoinUsCallToAction';
 import { SectionHeader } from '@/components/molecules/SectionHeader';
 import { BelongingStatement } from '@/components/molecules/BelongingStatement';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export function JoinUsPage() {
+  const { t } = useLanguage();
+
   return (
     <DetailPageLayout
-      title="Join Us"
-      subtitle="Be a part of the Terrer Lab at MIT"
+      title={t('joinUs.title')}
+      subtitle={t('joinUs.subtitle')}
       heroImage="/images/terrerlab/joinus-hero.jpg"
       heroHeight={830}
     >
@@ -34,17 +37,17 @@ export function JoinUsPage() {
             transition={{ duration: 0.5 }}
           >
             <SectionHeader
-              title="VALUES"
+              title={t('joinUs.values')}
               headingClassName="text-[#00380A]"
               headingStyle={{ fontWeight: 700, letterSpacing: '0.05em', marginBottom: 20 }}
               style={{ marginBottom: 36 }}
             />
             <TextBlock>
-              Inclusion in science starts by inclusion in the lab.
+              {t('joinUs.valuesIntro')}
             </TextBlock>
             <br />
             <TextBlock style={{ marginBottom: 25 }}>
-              Climate change is a global challenge, but its impacts and solutions are different around the world. We believe diversity is a key factor to provide solutions to tackle this challenge worldwide. Thus, the Terrer Lab embrace diversity as a necessity and an advantage for our common goal.
+              {t('joinUs.valuesDescription')}
             </TextBlock>
             <img
               src="/leeseunglab/images/terrerlab/valuemit.png"

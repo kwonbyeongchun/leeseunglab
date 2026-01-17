@@ -11,13 +11,13 @@ export interface LanguageSwitcherProps {
   className?: string;
 }
 
-const languages: { code: Language; label: string }[] = [
-  { code: 'EN', label: 'English' },
-  { code: 'KO', label: 'Korean' },
-];
-
 export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
+
+  const languages: { code: Language; label: string }[] = [
+    { code: 'EN', label: t('language.english') },
+    { code: 'KO', label: t('language.korean') },
+  ];
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -51,7 +51,7 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
         disableAnimation
       >
         <Text size="sm" weight={500}>
-          {language === 'EN' ? 'English' : 'Korean'}
+          {language === 'EN' ? t('language.english') : t('language.korean')}
         </Text>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}

@@ -19,6 +19,7 @@ export function NavigationBar({ className }: NavigationBarProps) {
 
   const mainNavItems = [
     { label: t('nav.home'), href: '/' },
+    { label: t('nav.research'), href: '/#research' },
     { label: t('nav.publications'), href: '/publications' },
   ];
 
