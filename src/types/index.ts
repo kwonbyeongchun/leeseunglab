@@ -55,7 +55,7 @@ export interface Publication {
   title: string;
   journal: string;
   doi?: string;
-  pdfUrl?: string;
+  abstractUrl?: string;
 }
 
 // News Item

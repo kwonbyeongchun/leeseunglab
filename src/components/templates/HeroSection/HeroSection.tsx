@@ -36,7 +36,7 @@ export function HeroSection({
   subtitle,
   description,
   scrollTarget,
-  overlayOpacity = 0.5,
+  overlayOpacity = 0.65,
   minHeight = 'screen',
   height,
   variant = 'landing',
